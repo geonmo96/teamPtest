@@ -24,7 +24,7 @@ public class MemberController {
 	@PostMapping("signup")
 	public String signup(MemberDTO dto) {
 		ms.join(dto);
-		return "/member/signupForm";
+		return "/member/loginForm";
 	}
 	@RequestMapping(value="dbIdCheck", produces = "application/text;charset=utf-8")
 	@ResponseBody

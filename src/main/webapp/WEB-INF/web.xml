@@ -49,6 +49,21 @@
    <filter-name>encodingFilter</filter-name>
    <url-pattern>/*</url-pattern>                 
 </filter-mapping> 
+
+<!-- login filter -->
 	
+
+<filter-mapping>	
+  <filter-name>WebFilter</filter-name>	
+  <url-pattern>/*</url-pattern>	
+</filter-mapping>
+<filter>	
+  <filter-name>WebFilter</filter-name>	
+  <filter-class>com.care.root.member.filter.WebFilter</filter-class>	
+  <init-param>	
+    <param-name>passPage</param-name>	
+    <param-value>/,/member/loginForm,/member/login,/member/signupForm,/member/signup,/member/dbIdCheck</param-value>	
+  </init-param>	
+</filter>
 
 </web-app>

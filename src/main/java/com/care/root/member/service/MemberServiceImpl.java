@@ -1,5 +1,8 @@
 package com.care.root.member.service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -26,7 +29,7 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 	@Override
-	public String login(MemberDTO dto, Model model) {
+	public String login(MemberDTO dto, Model model, HttpServletRequest request) {
 		MemberDTO dbDto = dao.login(dto);
 		if(dbDto == null) {
 			model.addAttribute("message", "아이디가 없습니다.");
@@ -36,6 +39,8 @@ public class MemberServiceImpl implements MemberService{
 			return "/member/loginForm";
 		}else {
 			//TODO 메인페이지 수정 예정
+			HttpSession session = request.getSession();
+			session.setAttribute("USER", dbDto.getId());
 			return "main";
 		}
 	}

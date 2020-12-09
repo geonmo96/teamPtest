@@ -1,5 +1,7 @@
 package com.care.root.member.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,8 +38,8 @@ public class MemberController {
 		return "/member/loginForm";
 	}
 	@PostMapping("login")
-	public String login(MemberDTO dto, Model model) {
-		String path = ms.login(dto, model);
+	public String login(MemberDTO dto, Model model, HttpServletRequest request) {
+		String path = ms.login(dto, model, request);
 		return "redirect:" + path;
 	}
 }

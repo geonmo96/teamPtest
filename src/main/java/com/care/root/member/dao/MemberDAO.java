@@ -13,4 +13,6 @@ public interface MemberDAO {
 	
 	@Select("select id from member where id = #{id}")
 	public String dbIdCheck(String id);
+	@Select("select id, pw from member where id = #{id}")
+	public MemberDTO login(MemberDTO dto);
 }

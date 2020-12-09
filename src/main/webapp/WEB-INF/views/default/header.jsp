@@ -20,8 +20,8 @@
 		<a href="#">리뷰이벤트</a>&nbsp;&nbsp;
 		<a href="#">쇼핑스토리</a>&nbsp;&nbsp;
 		<a href="#">판매자정보</a>&nbsp;&nbsp;
-		<a href="#">로그인</a>&nbsp;&nbsp;
-		<a href="#">회원가입</a>&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/member/loginForm">로그인</a>&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath }/member/signupForm">회원가입</a>&nbsp;&nbsp;
 		<br><br>
 		<hr>
 	</div>

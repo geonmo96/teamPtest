@@ -2,6 +2,7 @@ package com.care.root.member.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,6 +30,14 @@ public class MemberController {
 	@ResponseBody
 	public String dbIdCheck(@RequestParam("id") String id) {
 		return ms.dbIdCheck(id);
-	
+	}
+	@RequestMapping("loginForm")
+	public String loginForm() {
+		return "/member/loginForm";
+	}
+	@PostMapping("login")
+	public String login(MemberDTO dto, Model model) {
+		String path = ms.login(dto, model);
+		return "redirect:" + path;
 	}
 }

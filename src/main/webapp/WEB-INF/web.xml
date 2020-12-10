@@ -52,7 +52,7 @@
 
 <!-- login filter -->
 	
-
+ <!-- 
 <filter-mapping>	
   <filter-name>WebFilter</filter-name>	
   <url-pattern>/*</url-pattern>	
@@ -65,5 +65,5 @@
     <param-value>/,/member/loginForm,/member/login,/member/signupForm,/member/signup,/member/dbIdCheck,/member/loginKakao</param-value>	
   </init-param>	
 </filter>
-
+ -->
 </web-app>

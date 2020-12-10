@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,6 +132,14 @@
 <body>
 	<jsp:include page="../default/header.jsp"></jsp:include>
 	<div>
+		<div>
+			<a href="https://kauth.kakao.com/oauth/authorize?client_id=b7c160fc4b5f9830243927d9a94aea71&redirect_uri=http://localhost:8080/root/member/loginKakao&response_type=code">
+				<img width="165px" src="${pageContext.request.contextPath}/resources/images/kakao_btn.png">
+			</a>
+			<a href="createNaverState">
+				네이버로 로그인
+			</a>
+		</div>
 		<form action="signup" method="post" id="fo">
 			<table>
 				<tr> <td>아이디</td> 

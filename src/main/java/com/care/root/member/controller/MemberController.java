@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.care.root.member.dto.MemberDTO;
+import com.care.root.member.service.KakaoService;
 import com.care.root.member.service.MemberService;
 
 @Controller
@@ -18,6 +19,8 @@ import com.care.root.member.service.MemberService;
 public class MemberController {
 	@Autowired
 	MemberService ms;
+	@Autowired
+	KakaoService ks;
 	
 	@RequestMapping("signupForm")
 	public String signupForm() {
@@ -40,6 +43,12 @@ public class MemberController {
 	@PostMapping("login")
 	public String login(MemberDTO dto, Model model, HttpServletRequest request) {
 		String path = ms.login(dto, model, request);
-		return "redirect:" + path;
+		return "redirect:" + path; // 성공 main(임시), 실패 (loginForm)
+	}
+	@RequestMapping("loginKakao")
+	public String loginKakao(@RequestParam("code") String code, HttpServletRequest request) {
+		System.out.println(code);
+		ks.login(code, request);
+		return "redirect:main";
 	}
 }

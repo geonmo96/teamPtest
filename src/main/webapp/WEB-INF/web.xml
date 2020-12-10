@@ -62,7 +62,7 @@
   <filter-class>com.care.root.member.filter.WebFilter</filter-class>	
   <init-param>	
     <param-name>passPage</param-name>	
-    <param-value>/,/member/loginForm,/member/login,/member/signupForm,/member/signup,/member/dbIdCheck</param-value>	
+    <param-value>/,/member/loginForm,/member/login,/member/signupForm,/member/signup,/member/dbIdCheck,/member/loginKakao</param-value>	
   </init-param>	
 </filter>
 

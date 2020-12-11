@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.care.root.mail.service.MailService;
 import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.KakaoService;
 import com.care.root.member.service.MemberService;
@@ -22,6 +23,7 @@ public class MemberController {
 	@Autowired MemberService ms;
 	@Autowired KakaoService ks;
 	@Autowired NaverService ns;
+	@Autowired MailService mails;
 	
 	@RequestMapping("signupForm")
 	public String signupForm() {
@@ -69,6 +71,20 @@ public class MemberController {
 	@RequestMapping("logout")
 	public String logout(HttpServletRequest request) {
 		ms.logout(request);
+		return "redirect:main";
+	}
+	@RequestMapping("findId")
+	public String findId() {
+		return "/member/findId";
+	}
+	@PostMapping("findIdToEmail")
+	public String findIdToEmail(@RequestParam("name") String name, @RequestParam("email") String email, Model model) {
+		ms.checkEmail(name, email, model);
+		return "/member/emailCodeForm";
+	}
+	@RequestMapping("sendId")
+	public String sendId(@RequestParam("email") String email) {
+		mails.sendId(email);
 		return "redirect:main";
 	}
 }

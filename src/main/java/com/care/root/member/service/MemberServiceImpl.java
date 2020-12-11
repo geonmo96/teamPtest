@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.care.root.mail.service.MailService;
 import com.care.root.member.dao.MemberDAO;
 import com.care.root.member.dto.MemberDTO;
 
 @Service
 public class MemberServiceImpl implements MemberService{
-	@Autowired
-	MemberDAO dao;
+	@Autowired MemberDAO dao;
+	@Autowired MailService ms;
 	
 	@Override
 	public void join(MemberDTO dto) {
@@ -48,5 +49,22 @@ public class MemberServiceImpl implements MemberService{
 	public void logout(HttpServletRequest request) {
 		HttpSession session = (HttpSession) request.getSession();
 		session.removeAttribute("USER");
+	}
+	@Override
+	public void checkEmail(String name, String email, Model model) {
+		String dbName = null;
+		dbName = dao.selectNameToEmail(email);
+		if(dbName == null) {
+			model.addAttribute("message", "입력하신 이메일은 없는 이메일입니다");
+			model.addAttribute("code", 0);
+		} else if(!dbName.equals(name)) {
+			model.addAttribute("message", "이메일과 이름이 일치하지 않습니다");
+			model.addAttribute("code", 0);
+		} else {
+			model.addAttribute("message", "메일이 전송되었습니다");
+			model.addAttribute("code", ms.sendCode(email));
+			model.addAttribute("email", email);
+		}
+		
 	}
 }

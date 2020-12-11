@@ -11,7 +11,6 @@
 <script src="${pageContext.request.contextPath }/resources/member_js/daumpost.js"></script>
 <script src="${pageContext.request.contextPath }/resources/member_js/signupCheck.js"></script>
 <script type="text/javascript">
-
 </script>
 </head>
 <body>
@@ -46,7 +45,8 @@
 				<tr> 
 					<td>주소</td> 
 					<td>
-						<input type="text" name="m_address" id="m_address"> <input type="button" value="검색" onclick="searchAddress()">
+						<input type="text" name="m_address" id="m_address" readonly="readonly" placeholder="검색 기능을 이용해주세요"> 
+						<input type="button" value="검색" onclick="searchAddress()">
 					</td> 
 				</tr>
 				<tr>
@@ -61,7 +61,8 @@
 		</div>
 		<div>
 			<b>[필수] 이용약관 동의</b><br>
-			<textarea rows="10" cols="100">
+			<textarea rows="10" cols="100" readonly="readonly" id="agreement1">
+			
 				필수 이용약관 동의
 제1조(목적)
 이 약관은 대한민국농수산 회사(전자상거래 사업자)가 운영하는 대한민국농수산 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
@@ -242,7 +243,7 @@
 		</div>
 		<div>
 			<b>[필수] 개인정보 수집 및 이용 동의</b><br>
-			<textarea rows="10" cols="100">
+			<textarea rows="10" cols="100" readonly="readonly">
 1. 개인정보 수집목적 및 이용목적
 
 가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
@@ -295,7 +296,7 @@ o 로그 기록
 		</div>
 		<div>
 			<b>[선택] 쇼핑정보 수신 동의</b><br>
-			<textarea rows="10" cols="100">
+			<textarea rows="10" cols="100" readonly="readonly">
 할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한 쇼핑정보를 SMS나 이메일로 받아보실 수 있습니다.
 
 단, 주문/거래 정보 및 주요 정책과 관련된 내용은 수신동의 여부와 관계없이 발송됩니다.

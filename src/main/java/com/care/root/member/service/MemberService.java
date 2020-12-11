@@ -12,4 +12,5 @@ public interface MemberService {
 	public void join(MemberDTO dto);
 	public String dbIdCheck(String id);
 	public String login(MemberDTO dto, Model model, HttpServletRequest request);
+	public void logout(HttpServletRequest request);
 }

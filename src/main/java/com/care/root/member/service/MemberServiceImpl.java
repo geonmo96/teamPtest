@@ -44,4 +44,9 @@ public class MemberServiceImpl implements MemberService{
 			return "main";
 		}
 	}
+	@Override
+	public void logout(HttpServletRequest request) {
+		HttpSession session = (HttpSession) request.getSession();
+		session.removeAttribute("USER");
+	}
 }

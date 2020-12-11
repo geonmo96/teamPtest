@@ -1,6 +1,7 @@
 package com.care.root.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,5 +65,10 @@ public class MemberController {
 	@RequestMapping(value = "main" , produces="application/text;charset=utf-8")
 	public String main() {
 		return "/main";
+	}
+	@RequestMapping("logout")
+	public String logout(HttpServletRequest request) {
+		ms.logout(request);
+		return "redirect:main";
 	}
 }

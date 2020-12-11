@@ -26,7 +26,10 @@
 				<a href="${pageContext.request.contextPath }/member/loginForm">로그인</a>&nbsp;&nbsp;
 				<a href="${pageContext.request.contextPath }/member/signupForm">회원가입</a>&nbsp;&nbsp;
 			</c:when>
-			<c:otherwise>${sessionScope.USER }님&nbsp;&nbsp;로그아웃 구현</c:otherwise>
+			<c:otherwise>
+				<a href="#">${sessionScope.USER }님</a>&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/member/logout">로그아웃</a>
+			</c:otherwise>
 		</c:choose>
 		
 		<br><br>

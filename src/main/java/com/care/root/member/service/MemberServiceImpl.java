@@ -54,6 +54,7 @@ public class MemberServiceImpl implements MemberService{
 	public void checkEmail(String name, String email, Model model) {
 		String dbName = null;
 		dbName = dao.selectNameToEmail(email);
+		model.addAttribute("toDo", "findId");
 		if(dbName == null) {
 			model.addAttribute("message", "입력하신 이메일은 없는 이메일입니다");
 			model.addAttribute("code", 0);
@@ -65,6 +66,29 @@ public class MemberServiceImpl implements MemberService{
 			model.addAttribute("code", ms.sendCode(email));
 			model.addAttribute("email", email);
 		}
-		
+	}
+	@Override
+	public void checkId(String name, String id, Model model) {
+		MemberDTO dto = null;
+		dto = dao.selectId(id);
+		model.addAttribute("toDo", "findPw");
+		if(dto == null) {
+			model.addAttribute("message", "입력하신 아이디는 없는 아이디입니다");
+			model.addAttribute("code", 0);
+		} else if(!dto.getName().equals(name)) {
+			model.addAttribute("message", "회원정보가 일치하지 않습니다");
+			model.addAttribute("code", 0);
+		} else {
+			model.addAttribute("message", "메일이 전송되었습니다");
+			model.addAttribute("code", ms.sendCode(dto.getEmail()));
+			model.addAttribute("id", dto.getId());
+		}
+	}
+	@Override
+	public void modifyPw(String id, String pw) {
+		MemberDTO dto = new MemberDTO();
+		dto.setId(id);
+		dto.setPw(pw);
+		dao.modifyPw(dto);
 	}
 }

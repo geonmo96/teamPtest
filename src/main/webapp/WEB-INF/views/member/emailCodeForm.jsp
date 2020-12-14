@@ -11,28 +11,46 @@
 	function init(){
 		alert("${message}");
 		if("${message}" != "메일이 전송되었습니다"){
-			location.href="findId";
+			window.history.back();
 		}
 	} 
 	function checkCode(){
+		var toDo = "${toDo}";
 		var inputCode = document.getElementById("code").value;
 		var code = "${code}";
-		if(code == inputCode){
-			alert("인증되었습니다<br>메일을 확인해주세요")
-			$.ajax({
-				url : "sendId",
-				method : "POST",
-				data : {"email" : "${email}"},
-				success : function(data){
-					location.href="main"
-				},
-				error : function(){
-					alert("에러 발생")
-				}
-			});
-		} else {
-			alert("잘못 입력하셨습니다")
+		if(toDo == "findId"){
+			if(code == inputCode){
+				alert("인증되었습니다 메일을 확인해주세요")
+				$.ajax({
+					url : "sendId",
+					method : "POST",
+					data : {"email" : "${email}"},
+					success : function(data){
+						location.href="main"
+					},
+					error : function(){
+						alert("에러 발생")
+					}
+				});
+			} else {
+				alert("잘못 입력하셨습니다")
+			}			
+		} else if(toDo == "findPw"){
+			if(code == inputCode){
+				alert("인증되었습니다")
+				var fo = document.createElement("form");
+				fo.setAttribute("method", "post");
+				fo.setAttribute("action", "modifyPwForm");
+				var id = document.createElement("input");
+				id.setAttribute("type", "hidden");
+				id.setAttribute("name", "id");
+				id.setAttribute("value", "${id}");
+				fo.appendChild(id);
+				document.body.appendChild(fo);
+				fo.submit();
+			}
 		}
+		
 	}
 </script>
 </head>

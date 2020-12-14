@@ -87,4 +87,23 @@ public class MemberController {
 		mails.sendId(email);
 		return "redirect:main";
 	}
+	@RequestMapping("findPw")
+	public String findPw() {
+		return "/member/findPw";
+	}
+	@RequestMapping("findPwToEmail")
+	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model) {
+		ms.checkId(name, id, model);
+		return "/member/emailCodeForm";
+	}
+	@PostMapping("modifyPwForm")
+	public String modifyPwForm(@RequestParam("id") String id, Model model) {
+		model.addAttribute("id", id);
+		return "/member/modifyPwForm";
+	}
+	@PostMapping("modifyPw")
+	public String modifyPw(@RequestParam("id") String id, @RequestParam("pw") String pw) {
+		ms.modifyPw(id, pw);
+		return "redirect:main";
+	}
 }

@@ -6,14 +6,31 @@
 <head>
 <meta charset="UTF-8">
 <title>header</title>
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 <style>
- ul {
- 	list-style: none;
+a {
+	text-decoration: none !important;
+	color: #000000;
+}
+a:hover {
+	text-decoration: none !important
+}
+
+.menu{
+ 	margin: auto;
+ 	width: 100%;
+ 	height: 50px;
+ 	background-color: #E5D85C;
+ 	display: table;
+ }
+ .menu_list{
  	text-align: center;
+ 	display:table-cell;
+ 	vertical-align: middle;
  }
- li { 
- 	 display: inline;
- }
+
+ 
+ 
 </style>
 </head>
 <body>
@@ -39,19 +56,21 @@
 					</c:choose></td>
 			</tr>
 		</table>
-
-		<hr>
-		<ul>
-			<li><a href="#">산지직송</a></li>&nbsp;&nbsp;
-			<li><a href="#">지역명물</a></li>&nbsp;&nbsp;
-			<li><a href="#">차&음료</a></li>&nbsp;&nbsp;
-			<li><a href="#">묻고 답하기</a></li>&nbsp;&nbsp;
-			<li><a href="#">공지사항</a></li>&nbsp;&nbsp;
-			<li><a href="#">리뷰이벤트</a></li>&nbsp;&nbsp;
-			<li><a href="#">쇼핑스토리</a></li>&nbsp;&nbsp;
-			<li><a href="#">판매자정보</a></li>&nbsp;&nbsp;
-		</ul>
-		<hr>
+		
+		<div class="menu">	
+		<p class="menu_list">
+		<b>
+			<a href="#">산지직송</a>&nbsp;&nbsp;
+			<a href="#">지역명물</a>&nbsp;&nbsp;
+			<a href="#">차&음료</a>&nbsp;&nbsp;
+			<a href="#">묻고 답하기</a>&nbsp;&nbsp;
+			<a href="#">공지사항</a>&nbsp;&nbsp;
+			<a href="#">리뷰이벤트</a>&nbsp;&nbsp;
+			<a href="#">쇼핑스토리</a>&nbsp;&nbsp;
+			<a href="#">판매자정보</a>
+		</b>
+		</p>
+		</div>
 	</div>
 </body>
 </html>

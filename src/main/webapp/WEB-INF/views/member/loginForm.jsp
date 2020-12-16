@@ -22,8 +22,7 @@
 		<form action="login" method="post">
 		<table>
 			<tr> 
-				<td> 
-					
+				<td> 					
 					<input type="text" name="id" placeholder="아이디"> 
 				</td> 
 			</tr>

@@ -22,11 +22,7 @@
 		<form action="login" method="post">
 		<table>
 			<tr> 
-<<<<<<< HEAD
-				<td> 
-=======
 				<td> 					
->>>>>>> master
 					<input type="text" name="id" placeholder="아이디"> 
 				</td> 
 			</tr>

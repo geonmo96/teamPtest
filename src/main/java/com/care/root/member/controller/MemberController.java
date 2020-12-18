@@ -16,6 +16,7 @@ import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.KakaoService;
 import com.care.root.member.service.MemberService;
 import com.care.root.member.service.NaverService;
+import com.care.root.member.service.NaverSmsServiceImpl;
 
 @Controller
 @RequestMapping("member")
@@ -24,6 +25,15 @@ public class MemberController {
 	@Autowired KakaoService ks;
 	@Autowired NaverService ns;
 	@Autowired MailService mails;
+	
+	
+	@Autowired NaverSmsServiceImpl nss;
+	
+	@PostMapping(value = "sendSms", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public void send(@RequestParam("m_tel") String m_tel) {
+		nss.sendMessage(m_tel, "제발!!");
+	}
 	
 	@RequestMapping("signupForm")
 	public String signupForm() {

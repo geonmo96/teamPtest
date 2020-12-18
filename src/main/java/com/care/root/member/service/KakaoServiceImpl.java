@@ -36,7 +36,7 @@ public class KakaoServiceImpl implements KakaoService{
 			urlConnection.setRequestMethod("POST");
 			urlConnection.setRequestProperty("Authorization", "Bearer " + accessToken);
 			int responseCode = urlConnection.getResponseCode();
-//			System.out.println("response code(info) : " + responseCode);
+			System.out.println("response code(info) : " + responseCode);
 			BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 			String line = "";
 			String result = "";

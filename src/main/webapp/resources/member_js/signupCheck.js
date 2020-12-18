@@ -118,3 +118,17 @@
 			}
 		});
 	}
+	function sendSms(){
+		var m_tel = document.getElementById("m_tel").value;
+		$.ajax({
+			url : "sendSms",
+			data : "m_tel=" + m_tel,
+			type : "POST",
+			success : function(data){
+				alert("문자 발송");
+			},
+			error : function(){
+				alert("실패")
+			}
+		})
+	}

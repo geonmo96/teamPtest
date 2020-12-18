@@ -40,7 +40,7 @@
 					</td> 
 				</tr>
 				<tr> <td>이름</td> <td><input type="text" name="name" id="name"></td> </tr>
-				<tr> <td>휴대전화</td> <td><input type="text" name="m_tel" id="m_tel"></td> </tr>
+				<tr> <td>휴대전화</td> <td><input type="text" name="m_tel" id="m_tel"> <input type="button" onclick="sendSms()"></td>  </tr>
 				<tr> <td>이메일</td> <td><input type="text" name="email" id="email"></td> </tr>
 				<tr> 
 					<td>주소</td> 

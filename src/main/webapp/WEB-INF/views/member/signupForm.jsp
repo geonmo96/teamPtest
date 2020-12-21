@@ -21,7 +21,7 @@
 				<img width="165px" src="${pageContext.request.contextPath}/resources/images/kakao_btn.png">
 			</a>
 			<a href="createNaverState">
-				네이버로 로그인
+				<img width="165px" src="${pageContext.request.contextPath}/resources/images/naver_btn.PNG">
 			</a>
 		</div>
 		<form action="signup" method="post" id="fo">
@@ -36,7 +36,7 @@
 				<tr> <td>비밀번호 확인</td> 
 					<td>
 						<input type="password" name="pwChk" id="pwChk" onkeyup="pwEqualsCheck()">
-						<label id="pwCheckView">비밀번호 체크</label>
+						<label id="pwCheckView"></label>
 					</td> 
 				</tr>
 				<tr> <td>이름</td> <td><input type="text" name="name" id="name"></td> </tr>

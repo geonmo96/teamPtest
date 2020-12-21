@@ -31,8 +31,8 @@ public class MemberController {
 	
 	@PostMapping(value = "sendSms", produces = "application/text;charset=utf-8")
 	@ResponseBody
-	public void send(@RequestParam("m_tel") String m_tel) {
-		nss.sendMessage(m_tel, "제발!!");
+	public void sendSms(@RequestParam("m_tel") String m_tel) {
+		nss.sendSms(m_tel, "제발!!");
 	}
 	
 	@RequestMapping("signupForm")

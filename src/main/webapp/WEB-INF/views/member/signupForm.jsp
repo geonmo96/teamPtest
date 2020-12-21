@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="${pageContext.request.contextPath }/resources/member_js/daumpost.js"></script>
-<script src="${pageContext.request.contextPath }/resources/member_js/signupCheck.js"></script>
+<script src="${pageContext.request.contextPath }/resources/member_js/signupCheck.js?ver=123"></script>
 <script type="text/javascript">
 </script>
 </head>
@@ -40,7 +40,15 @@
 					</td> 
 				</tr>
 				<tr> <td>이름</td> <td><input type="text" name="name" id="name"></td> </tr>
-				<tr> <td>휴대전화</td> <td><input type="text" name="m_tel" id="m_tel"> <input type="button" onclick="sendSms()"></td>  </tr>
+				<tr> 
+					<td>휴대전화</td> 
+					<td>
+						<input type="text" name="m_tel" id="m_tel"> 
+						<input type="button" onclick="sendSms()" value="인증 문자 전송"><br>
+						<input type="text" id="authCode">
+						<input type="button" onclick="authCodeCheck()" value="확인"> 
+					</td>  
+				</tr>
 				<tr> <td>이메일</td> <td><input type="text" name="email" id="email"></td> </tr>
 				<tr> 
 					<td>주소</td> 

@@ -6,6 +6,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
@@ -44,9 +45,6 @@ public class NaverSmsServiceImpl {
 			message.setContent(content);
 			messages.add(message);
 			smsRequestDto.setMessages(messages);
-			System.out.println(message.getTo());
-			System.out.println(message.getContent());
-			System.out.println(smsRequestDto.getMessages().get(0));
 			
 			String jsonBody = objectMapper.writeValueAsString(smsRequestDto); 
 			HttpHeaders headers = new HttpHeaders(); 
@@ -54,16 +52,12 @@ public class NaverSmsServiceImpl {
 			headers.set("x-ncp-apigw-timestamp", time.toString()); 
 			headers.set("x-ncp-iam-access-key", "wKDBuFGJQ7Fn94C53HLw"); 
 			String sig = makeSignature(time); 
-			System.out.println("sig -> " + sig); 
 			headers.set("x-ncp-apigw-signature-v2", sig); 
 			HttpEntity<String> body = new HttpEntity<String>(jsonBody, headers); 
-			System.out.println(body.getBody()); 
-			System.out.println(body.getHeaders());
 			RestTemplate restTemplate = new RestTemplate(); 
 			sendSmsResponseDto = restTemplate.postForObject(new URI("https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:262568297465:team-project/messages"), body, SendSmsResponseDto.class); 
-			System.out.println(sendSmsResponseDto.getStatusCode()); 
 		} catch(Exception e) {
-			e.printStackTrace();
+			
 		}
 		return sendSmsResponseDto; 
 		} 
@@ -82,6 +76,15 @@ public class NaverSmsServiceImpl {
 		byte[] rawHmac = mac.doFinal(message.getBytes("UTF-8")); 
 		String encodeBase64String = Base64.encodeBase64String(rawHmac); 
 		return encodeBase64String; 
-		
+	}
+	public String rand() {
+		Random ran = new Random();
+		String str = "";
+		int num;
+		while(str.length() != 6) {
+			num = ran.nextInt(10);
+			str += num;
+		}
+		return str;
 	}
 }

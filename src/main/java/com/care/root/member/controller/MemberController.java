@@ -1,7 +1,6 @@
 package com.care.root.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,8 +30,8 @@ public class MemberController {
 	
 	@PostMapping(value = "sendSms", produces = "application/text;charset=utf-8")
 	@ResponseBody
-	public void sendSms(@RequestParam("m_tel") String m_tel) {
-		nss.sendSms(m_tel, "제발!!");
+	public String sendSms(@RequestParam("m_tel") String m_tel) {
+		return ms.send6Num(m_tel);
 	}
 	
 	@RequestMapping("signupForm")

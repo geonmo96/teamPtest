@@ -16,4 +16,5 @@ public interface MemberService {
 	public void checkEmail(String name, String email, Model model);
 	public void checkId(String name, String id, Model model);
 	public void modifyPw(String id, String pw);
+	public String send6Num(String m_tel);
 }

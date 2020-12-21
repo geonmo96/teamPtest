@@ -15,6 +15,7 @@ import com.care.root.member.dto.MemberDTO;
 public class MemberServiceImpl implements MemberService{
 	@Autowired MemberDAO dao;
 	@Autowired MailService ms;
+	@Autowired NaverSmsServiceImpl nss;
 	
 	@Override
 	public void join(MemberDTO dto) {
@@ -23,7 +24,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public String dbIdCheck(String id) {
 		String dbId = dao.dbIdCheck(id);
-		if(dbId == null) {
+		if(id.equals("")) {
+			return "아이디를 입력하세요";
+		} else if(dbId == null) {
 			return "회원가입 가능";
 		} else {
 			return "중복된 아이디입니다";
@@ -90,5 +93,11 @@ public class MemberServiceImpl implements MemberService{
 		dto.setId(id);
 		dto.setPw(pw);
 		dao.modifyPw(dto);
+	}
+	@Override
+	public String send6Num(String m_tel) {
+		String num = nss.rand();
+		nss.sendSms(m_tel, "인증번호 [" + num + "]를 입력해주세요");
+		return num;
 	}
 }

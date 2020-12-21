@@ -1,7 +1,6 @@
 package com.care.root.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,7 @@ import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.KakaoService;
 import com.care.root.member.service.MemberService;
 import com.care.root.member.service.NaverService;
+import com.care.root.member.service.NaverSmsServiceImpl;
 
 @Controller
 @RequestMapping("member")
@@ -24,6 +24,15 @@ public class MemberController {
 	@Autowired KakaoService ks;
 	@Autowired NaverService ns;
 	@Autowired MailService mails;
+	
+	
+	@Autowired NaverSmsServiceImpl nss;
+	
+	@PostMapping(value = "sendSms", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String sendSms(@RequestParam("m_tel") String m_tel) {
+		return ms.send6Num(m_tel);
+	}
 	
 	@RequestMapping("signupForm")
 	public String signupForm() {

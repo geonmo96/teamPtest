@@ -100,4 +100,17 @@ public class MemberServiceImpl implements MemberService{
 		nss.sendSms(m_tel, "인증번호 [" + num + "]를 입력해주세요");
 		return num;
 	}
+	@Override
+	public String dbNameCheck(MemberDTO dto, HttpServletRequest request) {
+		MemberDTO dbDto = dao.dbNameCheck(dto);
+		if(dbDto == null) {
+			return "0";
+		} else if(!dbDto.getName().equals(dto.getName())) {
+			return "-1";
+		} else {
+			HttpSession session = (HttpSession) request.getSession();
+			session.setAttribute("UserId", dbDto.getId());
+			return "1";
+		}
+	}
 }

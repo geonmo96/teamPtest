@@ -20,7 +20,7 @@
 </script>
 <body>
 	<jsp:include page="../default/header.jsp"></jsp:include>
-	<form action="findPwToEmail" method="post" id="fo">
+	<form action="pwEmailCheck" method="post" id="fo">
 		<table>
 			<tr>
 				<td>이름 </td>

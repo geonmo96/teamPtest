@@ -22,6 +22,8 @@ public interface MemberDAO {
 	public String selectIdToEmail(String email);
 	@Select("select * from member where id = #{id}")
 	public MemberDTO selectId(String id);
+	@Select("select * from member where m_tel = #{m_tel}")
+	public MemberDTO dbNameCheck(MemberDTO dto);
 	
 	@Update("update member set pw = #{pw} where id = #{id}")
 	public void modifyPw(MemberDTO dto);

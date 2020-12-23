@@ -1,7 +1,6 @@
 package com.care.root.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.PageContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,7 @@ import com.care.root.member.dto.MemberDTO;
 import com.care.root.member.service.KakaoService;
 import com.care.root.member.service.MemberService;
 import com.care.root.member.service.NaverService;
+import com.care.root.member.service.NaverSmsServiceImpl;
 
 @Controller
 @RequestMapping("member")
@@ -24,6 +24,15 @@ public class MemberController {
 	@Autowired KakaoService ks;
 	@Autowired NaverService ns;
 	@Autowired MailService mails;
+	
+	
+	@Autowired NaverSmsServiceImpl nss;
+	
+	@PostMapping(value = "sendSms", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String sendSms(@RequestParam("m_tel") String m_tel) {
+		return ms.send6Num(m_tel);
+	}
 	
 	@RequestMapping("signupForm")
 	public String signupForm() {
@@ -73,11 +82,11 @@ public class MemberController {
 		ms.logout(request);
 		return "redirect:main";
 	}
-	@RequestMapping("findId")
+	@RequestMapping("findIdEmail")
 	public String findId() {
-		return "/member/findId";
+		return "/member/findIdEmail";
 	}
-	@PostMapping("findIdToEmail")
+	@PostMapping("idEmailCheck")
 	public String findIdToEmail(@RequestParam("name") String name, @RequestParam("email") String email, Model model) {
 		ms.checkEmail(name, email, model);
 		return "/member/emailCodeForm";
@@ -86,5 +95,43 @@ public class MemberController {
 	public String sendId(@RequestParam("email") String email) {
 		mails.sendId(email);
 		return "redirect:main";
+	}
+	@RequestMapping("findPwEmail")
+	public String findPw() {
+		return "/member/findPwEmail";
+	}
+	@RequestMapping("pwEmailCheck")
+	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model) {
+		ms.checkId(name, id, model);
+		return "/member/emailCodeForm";
+	}
+	@PostMapping("modifyPwForm")
+	public String modifyPwForm(@RequestParam("id") String id, Model model) {
+		model.addAttribute("id", id);
+		return "/member/modifyPwForm";
+	}
+	@PostMapping("modifyPw")
+	public String modifyPw(@RequestParam("id") String id, @RequestParam("pw") String pw) {
+		ms.modifyPw(id, pw);
+		return "redirect:main";
+	}
+	@PostMapping(value = "dbNameCheck", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String dbNameCheck(MemberDTO dto, HttpServletRequest request) {
+//		System.out.println(dto.getName());
+		return ms.dbNameCheck(dto, request);
+	}
+	@RequestMapping("findIdTel")
+	public String findIdTel() {
+		return "/member/findIdTel";
+	}
+	@PostMapping("idAuthCheck")
+	public String idAuthCheck(@RequestParam("m_tel") String m_tel, Model model) {
+		model.addAttribute("authCode", ms.send6Num(m_tel));
+		return "/member/telCodeForm";
+	}
+	@RequestMapping("idView")
+	public String idView() {
+		return "/member/idView";
 	}
 }

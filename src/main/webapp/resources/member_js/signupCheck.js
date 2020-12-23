@@ -14,6 +14,7 @@
 			chk3.checked = false;
 		}
 	}
+	var telAuthCodeCheck = false;
 	function chkCheck(){
 		var chk1 = document.getElementById("agree1");
 		var chk2 = document.getElementById("agree2");
@@ -27,6 +28,8 @@
 			alert("이름을 입력하세요")
 		} else if(!telCheck()){
 			alert("전화번호를 입력해주세요")
+		} else if(!telAuthCodeCheck){
+			alert("전화번호 인증을 해주세요")
 		} else if(!emailCheck()){
 			alert("이메일을 입력해주세요")
 		} else if(!addressCheck()){
@@ -118,3 +121,30 @@
 			}
 		});
 	}
+	var authCode = 0;
+	function sendSms(){
+		var m_tel = document.getElementById("m_tel").value;
+		$.ajax({
+			url : "sendSms",
+			data : "m_tel=" + m_tel,
+			type : "POST",
+			success : function(data){
+				alert("문자가 발송되었습니다.");
+				authCode = data;
+			},
+			error : function(){
+				alert("실패")
+			}
+		})
+	}
+	function authCodeCheck(){
+		var inputAutoCode = document.getElementById("authCode").value;
+		if(authCode == inputAutoCode){
+			alert("인증 되었습니다.");
+			document.getElementById("m_tel").readOnly = true;
+			telAuthCodeCheck = true;
+		} else {
+			alert("일치하지 않습니다.");
+		}
+	}
+	

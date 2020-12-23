@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="${pageContext.request.contextPath }/resources/member_js/daumpost.js"></script>
-<script src="${pageContext.request.contextPath }/resources/member_js/signupCheck.js"></script>
+<script src="${pageContext.request.contextPath }/resources/member_js/signupCheck.js?ver=123"></script>
 <script type="text/javascript">
 </script>
 </head>
@@ -21,7 +21,7 @@
 				<img width="165px" src="${pageContext.request.contextPath}/resources/images/kakao_btn.png">
 			</a>
 			<a href="createNaverState">
-				네이버로 로그인
+				<img width="165px" src="${pageContext.request.contextPath}/resources/images/naver_btn.PNG">
 			</a>
 		</div>
 		<form action="signup" method="post" id="fo">
@@ -36,11 +36,19 @@
 				<tr> <td>비밀번호 확인</td> 
 					<td>
 						<input type="password" name="pwChk" id="pwChk" onkeyup="pwEqualsCheck()">
-						<label id="pwCheckView">비밀번호 체크</label>
+						<label id="pwCheckView"></label>
 					</td> 
 				</tr>
 				<tr> <td>이름</td> <td><input type="text" name="name" id="name"></td> </tr>
-				<tr> <td>휴대전화</td> <td><input type="text" name="m_tel" id="m_tel"></td> </tr>
+				<tr> 
+					<td>휴대전화</td> 
+					<td>
+						<input type="text" name="m_tel" id="m_tel"> 
+						<input type="button" onclick="sendSms()" value="인증 문자 전송"><br>
+						<input type="text" id="authCode">
+						<input type="button" onclick="authCodeCheck()" value="확인"> 
+					</td>  
+				</tr>
 				<tr> <td>이메일</td> <td><input type="text" name="email" id="email"></td> </tr>
 				<tr> 
 					<td>주소</td> 

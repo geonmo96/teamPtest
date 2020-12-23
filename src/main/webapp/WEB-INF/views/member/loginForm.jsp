@@ -29,7 +29,7 @@
 			<tr> <td> <input type="password" name="pw" placeholder="비밀번호"> </td> </tr>
 			<tr> <td> <input type="submit" value="로그인"> </td> </tr> 
 				
-			<tr> <td> <a href="findId">아이디 찾기</a> </td> <td> <a href="#">비밀번호 찾기</a> </td> </tr> 
+			<tr> <td> <a href="findIdEmail">아이디 찾기</a> </td> <td> <a href="findPwEmail">비밀번호 찾기</a> </td> </tr> 
 			<tr> <td> <a href="signupForm">회원가입</a>
 		</table>
 		</form>

@@ -33,7 +33,10 @@ public class MemberController {
 	public String sendSms(@RequestParam("m_tel") String m_tel) {
 		return ms.send6Num(m_tel);
 	}
-	
+	@RequestMapping("join")
+	public String join() {
+		return "/member/join";
+	}
 	@RequestMapping("signupForm")
 	public String signupForm() {
 		return "/member/signupForm";

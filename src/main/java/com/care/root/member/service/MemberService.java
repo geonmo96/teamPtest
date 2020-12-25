@@ -14,7 +14,8 @@ public interface MemberService {
 	public String login(MemberDTO dto, Model model, HttpServletRequest request);
 	public void logout(HttpServletRequest request);
 	public void checkEmail(String name, String email, Model model);
-	public void checkId(String name, String id, Model model);
+	public String checkId(String name, String id, Model model, String method, HttpServletRequest request);
 	public void modifyPw(String id, String pw);
 	public String send6Num(String m_tel);
+	public String dbNameCheck(MemberDTO dto, HttpServletRequest request);
 }

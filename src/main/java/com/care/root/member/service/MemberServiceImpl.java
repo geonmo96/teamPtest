@@ -71,21 +71,33 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 	@Override
-	public void checkId(String name, String id, Model model) {
+	public String checkId(String name, String id, Model model, String method, HttpServletRequest request) {
 		MemberDTO dto = null;
 		dto = dao.selectId(id);
 		model.addAttribute("toDo", "findPw");
 		if(dto == null) {
 			model.addAttribute("message", "입력하신 아이디는 없는 아이디입니다");
 			model.addAttribute("code", 0);
+			return "0";
 		} else if(!dto.getName().equals(name)) {
 			model.addAttribute("message", "회원정보가 일치하지 않습니다");
 			model.addAttribute("code", 0);
+			return "-1";
 		} else {
-			model.addAttribute("message", "메일이 전송되었습니다");
-			model.addAttribute("code", ms.sendCode(dto.getEmail()));
 			model.addAttribute("id", dto.getId());
+			if(method.equals("email")) {
+				model.addAttribute("code", ms.sendCode(dto.getEmail()));
+				model.addAttribute("message", "메일이 전송되었습니다");
+				return "1";
+			} else if(method.equals("tel")) {
+				HttpSession session = request.getSession();
+				session.setAttribute("authCode", send6Num(dto.getM_tel()));
+				session.setAttribute("id", dto.getId());
+				session.setAttribute("find", "pw");
+				return "1";
+			}
 		}
+		return "-1";
 	}
 	@Override
 	public void modifyPw(String id, String pw) {
@@ -99,5 +111,18 @@ public class MemberServiceImpl implements MemberService{
 		String num = nss.rand();
 		nss.sendSms(m_tel, "인증번호 [" + num + "]를 입력해주세요");
 		return num;
+	}
+	@Override
+	public String dbNameCheck(MemberDTO dto, HttpServletRequest request) {
+		MemberDTO dbDto = dao.dbNameCheck(dto);
+		if(dbDto == null) {
+			return "0";
+		} else if(!dbDto.getName().equals(dto.getName())) {
+			return "-1";
+		} else {
+			HttpSession session = (HttpSession) request.getSession();
+			session.setAttribute("UserId", dbDto.getId());
+			return "1";
+		}
 	}
 }

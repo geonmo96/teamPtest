@@ -14,13 +14,18 @@
 			chk3.checked = false;
 		}
 	}
-	var telAuthCodeCheck = false;
-	function chkCheck(){
+	function doSignup(){
 		var chk1 = document.getElementById("agree1");
 		var chk2 = document.getElementById("agree2");
 		if(chk1.checked != true || chk2.checked != true){
 			alert("필수 약관에 동의해주세요")
-		} else if(!idCheck()){
+		} else {
+			location.href="signupForm";
+		}
+	}
+	var telAuthCodeCheck = false;
+	function chkCheck(){
+		if(!idCheck()){
 			alert("아이디를 입력해주세요")
 		} else if(!pwCheck()){
 			

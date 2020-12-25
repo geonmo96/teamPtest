@@ -9,7 +9,8 @@
 </head>
 <body>
 	<jsp:include page="../default/header.jsp"></jsp:include>
-	<form action="findIdToEmail" method="post">
+	<a href="findIdTel">가입된 전화번호로 찾기</a>
+	<form action="idEmailCheck" method="post">
 		이름 입력 : <input type="text" name="name"><br>
 		이메일 입력  : <input type="text" name="email"><br>
 		<input type="submit" value="이메일 전송">

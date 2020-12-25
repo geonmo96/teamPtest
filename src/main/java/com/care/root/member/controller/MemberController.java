@@ -33,7 +33,10 @@ public class MemberController {
 	public String sendSms(@RequestParam("m_tel") String m_tel) {
 		return ms.send6Num(m_tel);
 	}
-	
+	@RequestMapping("join")
+	public String join() {
+		return "/member/join";
+	}
 	@RequestMapping("signupForm")
 	public String signupForm() {
 		return "/member/signupForm";
@@ -82,11 +85,11 @@ public class MemberController {
 		ms.logout(request);
 		return "redirect:main";
 	}
-	@RequestMapping("findId")
+	@RequestMapping("findIdEmail")
 	public String findId() {
-		return "/member/findId";
+		return "/member/findIdEmail";
 	}
-	@PostMapping("findIdToEmail")
+	@PostMapping("idEmailCheck")
 	public String findIdToEmail(@RequestParam("name") String name, @RequestParam("email") String email, Model model) {
 		ms.checkEmail(name, email, model);
 		return "/member/emailCodeForm";
@@ -96,13 +99,13 @@ public class MemberController {
 		mails.sendId(email);
 		return "redirect:main";
 	}
-	@RequestMapping("findPw")
+	@RequestMapping("findPwEmail")
 	public String findPw() {
-		return "/member/findPw";
+		return "/member/findPwEmail";
 	}
-	@RequestMapping("findPwToEmail")
-	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model) {
-		ms.checkId(name, id, model);
+	@RequestMapping("pwEmailCheck")
+	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+		ms.checkId(name, id, model, "email", request);
 		return "/member/emailCodeForm";
 	}
 	@PostMapping("modifyPwForm")
@@ -114,5 +117,41 @@ public class MemberController {
 	public String modifyPw(@RequestParam("id") String id, @RequestParam("pw") String pw) {
 		ms.modifyPw(id, pw);
 		return "redirect:main";
+	}
+	@PostMapping(value = "dbNameCheck", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String dbNameCheck(MemberDTO dto, HttpServletRequest request) {
+//		System.out.println(dto.getName());
+		return ms.dbNameCheck(dto, request);
+	}
+	@RequestMapping("findIdTel")
+	public String findIdTel() {
+		return "/member/findIdTel";
+	}
+	@PostMapping("idAuthCheck")
+	public String idAuthCheck(@RequestParam("m_tel") String m_tel, Model model) {
+		model.addAttribute("authCode", ms.send6Num(m_tel));
+		model.addAttribute("find", "id");
+		return "/member/telCodeForm";
+	}
+	@RequestMapping("idView")
+	public String idView() {
+		return "/member/idView";
+	}
+	@RequestMapping("findPwTel")
+	public String findPwTel() {
+		return "/member/findPwTel";
+	}
+	@PostMapping(value = "findPwTelCheck", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String findPwTelCheck(@RequestParam("name") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+		return ms.checkId(name, id, model, "tel", request);
+		
+	}
+	@PostMapping("telCodeForm")
+	public String telCodeForm(@RequestParam("id") String id, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("find", "pw");
+		return "/member/telCodeForm";
 	}
 }

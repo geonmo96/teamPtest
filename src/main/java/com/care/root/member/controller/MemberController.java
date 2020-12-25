@@ -104,8 +104,8 @@ public class MemberController {
 		return "/member/findPwEmail";
 	}
 	@RequestMapping("pwEmailCheck")
-	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model) {
-		ms.checkId(name, id, model);
+	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+		ms.checkId(name, id, model, "email", request);
 		return "/member/emailCodeForm";
 	}
 	@PostMapping("modifyPwForm")
@@ -131,10 +131,27 @@ public class MemberController {
 	@PostMapping("idAuthCheck")
 	public String idAuthCheck(@RequestParam("m_tel") String m_tel, Model model) {
 		model.addAttribute("authCode", ms.send6Num(m_tel));
+		model.addAttribute("find", "id");
 		return "/member/telCodeForm";
 	}
 	@RequestMapping("idView")
 	public String idView() {
 		return "/member/idView";
+	}
+	@RequestMapping("findPwTel")
+	public String findPwTel() {
+		return "/member/findPwTel";
+	}
+	@PostMapping(value = "findPwTelCheck", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String findPwTelCheck(@RequestParam("name") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+		return ms.checkId(name, id, model, "tel", request);
+		
+	}
+	@PostMapping("telCodeForm")
+	public String telCodeForm(@RequestParam("id") String id, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("find", "pw");
+		return "/member/telCodeForm";
 	}
 }

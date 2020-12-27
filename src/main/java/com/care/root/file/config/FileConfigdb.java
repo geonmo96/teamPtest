@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.care.root.file.service")
+@MapperScan(basePackages = "com.care.root.file.filedao")
 public class FileConfigdb {
 
 	@Bean
@@ -29,7 +29,7 @@ public class FileConfigdb {
 		return ssf.getObject();
 	}
 	@Bean
-	public SqlSession memberSqlSession() throws Exception {
+	public SqlSession fileSqlSession() throws Exception {
 		return new SqlSessionTemplate(memberSqlSessionFactory());
 	}
 	

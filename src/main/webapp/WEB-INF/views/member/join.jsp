@@ -10,6 +10,98 @@
 <script src="${pageContext.request.contextPath }/resources/member_js/daumpost.js"></script>
 <script src="${pageContext.request.contextPath }/resources/member_js/signupCheck.js?ver=123"></script>
 
+<<<<<<< HEAD
+<style type="text/css">
+img {
+	max-width: 90%;
+	height: auto !important;
+}
+
+.button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 10px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 18px;
+	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+
+.button1 {
+	background-color: white;
+	color: black;
+	border: 2px solid #555555;
+}
+
+.button1:hover {
+	background-color: #555555;
+	color: white;
+}
+</style>
+
+</head>
+<body>
+   <jsp:include page="../default/header.jsp"></jsp:include> 
+   <div style ="padding: 5px 50px 5px 50px;">
+   <p style="text-align:center; font-size:24px;">백미양식 <b>회원가입</b> 혜택</p>
+   
+   <h1></h1>
+   <table width="100%">
+   <tr>
+   <td width="25%"><img src="../resources/images/joing_benefit/benefit_kakao.png"></td>
+   <td width="25%"><img src="../resources/images/joing_benefit/benefit_lifeMember.png"></td>
+   <td width="25%"><img src="../resources/images/joing_benefit/benefit_member.png"></td>
+   <td width="25%"><img src="../resources/images/joing_benefit/benefit_PhotoReview.png"></td>
+   </tr>
+   </table>
+   <p style="text-align:center; font-size:10px;">
+   쿠폰/적립금은 회원가입 즉시 사용 가능합니다.
+   </p>
+   <br><br>
+   <div>
+     <input type="checkbox" id="allAgree"onclick="allCheck()"><b> 전체 동의</b>
+   </div>
+   <hr>
+   <div style="font-size:13px">
+		&nbsp;
+		<input type="checkbox" name="agree1" id="agree1">이용약관
+		<a href="#use" style="font-size:10px; background-color: #CEFFC7;">본문보기</a>
+		<br>
+		&nbsp;
+		<input type="checkbox" name="agree2" id="agree2">개인정보 수집 및 이용
+		<a href="#information" style="font-size:10px; background-color: #CEFFC7;">본문보기</a>
+		<br>
+		&nbsp;
+		<input type="checkbox" name="agree3" id="agree3">마케팅 수신동의
+		<a href="#marketing" style="font-size:10px; background-color: #CEFFC7;">본문보기</a>
+	</div>
+	
+	<div style="font-size:10px">
+&nbsp;&nbsp;쇼핑몰에서 제공하는 신상품 소식/할인쿠폰을 무상으로 보내드립니다!<br>
+&nbsp;&nbsp;단, 상품 구매 정보는 수신동의 여부 관계없이 발송됩니다.<br>
+&nbsp;&nbsp;<b>마케팅 수신 동의를 하지 않으셔도 서비스 이용에는 문제가 없습니다.</b><br>
+	</div>
+
+    	<br><br>
+    	
+    	<div style="text-align:center">
+  	 	<input type="button" value="동의하고 가입하기" onclick="doSignup()" class="button button1">
+		</div>
+		
+		<br><br>
+
+		<div >
+		<a name="use"></a>
+      <b>[필수] 이용약관 동의</b><br>
+      <textarea rows="10" cols="100" readonly="readonly" id="agreement1" style="width:100%;height:100;border:1;overflow:visible;text-overflow:ellipsis;">
+이용약관
+
+=======
 </head>
 <body>
 	<jsp:include page="../default/header.jsp"></jsp:include>
@@ -22,6 +114,7 @@
 		<textarea rows="10" cols="100" readonly="readonly" id="agreement1">
 			
 				필수 이용약관 동의
+>>>>>>> flowerboon
 제1조(목적)
 이 약관은 대한민국농수산 회사(전자상거래 사업자)가 운영하는 대한민국농수산 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
 ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
@@ -185,13 +278,34 @@
 
 부 칙(시행일) 이 약관은 년 월 일부터 시행합니다.
 
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> flowerboon
 #카카오톡 상담톡 시행에 관한 내용
 "(쇼핑몰명)"은 상담업무를 카카오톡 상담톡으로 진행하며, 만약 카카오톡을 통해 안내되는 상담 내용을 Wi-Fi 나 PC가 아닌 이동통신망으로 이용할 경우, 데이터 요금이 발생할 수 있습니다.
 카카오톡을 통해 상담을 원치 않으실 경우 고객센터, 게시판 문의를 이용해 주시기 바랍니다.
 
 부 칙(시행일) 이 약관은 2019년 4월 19일부터 시행합니다.
+<<<<<<< HEAD
+	       </textarea>
+      <br> 
+   </div>
+   
+   <br>
+   
+   <div>
+   <a name="information"></a>
+         <b>[필수] 개인정보 수집 및 이용 동의</b><br>
+         <textarea rows="10" cols="100" readonly="readonly" style="width:100%;height:100;border:1;overflow:visible;text-overflow:ellipsis;">
+개인정보 수집 및 이용
+         
+1. 개인정보 수집목적 및 이용목적
+가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
+콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스
+나. 회원 관리
+=======
 			</textarea>
 		<br> 이용약관에 동의하십니까?
 		<input type="checkbox" name="agree1"id="agree1">
@@ -208,11 +322,53 @@
 
 나. 회원 관리
 
+>>>>>>> flowerboon
 회원제 서비스 이용에 따른 본인확인 , 개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지 , 가입 의사 확인 , 연령확인 , 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 불만처리 등 민원처리 , 고지사항 전달
 
 2. 수집하는 개인정보 항목 : 이름 , 생년월일 , 성별 , 로그인ID , 비밀번호 , 자택 전화번호 , 휴대전화번호 , 이메일 , 14세미만 가입자의 경우 법정대리인의 정보
 
 3. 개인정보의 보유기간 및 이용기간
+<<<<<<< HEAD
+원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
+가. 회사 내부 방침에 의한 정보 보유 사유
+
+o 부정거래 방지 및 쇼핑몰 운영방침에 따른 보관 : OO년
+나. 관련 법령에 의한 정보보유 사유
+
+o 계약 또는 청약철회 등에 관한 기록
+-보존이유 : 전자상거래등에서의소비자보호에관한법률
+-보존기간 : 5년
+
+o 대금 결제 및 재화 등의 공급에 관한 기록
+-보존이유: 전자상거래등에서의소비자보호에관한법률
+-보존기간 : 5년 
+
+o 소비자 불만 또는 분쟁처리에 관한 기록
+-보존이유 : 전자상거래등에서의소비자보호에관한법률
+-보존기간 : 3년 
+
+o 로그 기록 
+-보존이유: 통신비밀보호법
+-보존기간 : 3개월
+
+※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
+         </textarea><br>
+      </div>
+      
+      <br>
+      
+      <div>     
+      <a name="marketing"></a>
+         <b>[선택] 쇼핑정보 수신 동의</b><br>
+         <textarea rows="10" cols="100" readonly="readonly" style="width:100%;height:40;border:1;overflow:visible;text-overflow:ellipsis;">
+할인쿠폰 및 혜택, 이벤트, 신상품 소식 등 쇼핑몰에서 제공하는 유익한 쇼핑정보를 문자나 이메일로 받아보실 수 있습니다.
+단, 주문/거래 정보 및 주요 정책과 관련된 내용은 수신동의 여부와 관계없이 발송됩니다.
+선택 약관에 동의하지 않으셔도 회원가입은 가능하며, 회원가입 후 회원정보수정 페이지에서 언제든지 수신여부를 변경하실 수 있습니다.
+         </textarea>
+         <br>        
+      </div>
+</div>
+=======
 
 원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.
 
@@ -269,5 +425,6 @@ o 로그 기록
 		</div>
 		<input type="button" value="회원가입" onclick="chkCheck()">
 
+>>>>>>> flowerboon
 </body>
 </html>

@@ -125,4 +125,26 @@ public class MemberServiceImpl implements MemberService{
 			return "1";
 		}
 	}
+	@Override
+	public void setInfo(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		model.addAttribute("dto", dao.selectId((String)session.getAttribute("USER")));
+	}
+	@Override
+	public String checkIdPw(MemberDTO dto) {
+		MemberDTO dbDto = dao.selectId(dto.getId());
+		if(dbDto == null) {
+			return "-1";
+		} else if(!dbDto.getPw().equals(dto.getPw())) {
+			return "0";
+		} else {
+			return "1";
+		}
+	}
+	@Override
+	public void secession(String id, HttpServletRequest request) {
+		dao.secession(id);
+		HttpSession session = request.getSession();
+		session.invalidate();
+	}
 }

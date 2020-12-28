@@ -18,4 +18,7 @@ public interface MemberService {
 	public void modifyPw(String id, String pw);
 	public String send6Num(String m_tel);
 	public String dbNameCheck(MemberDTO dto, HttpServletRequest request);
+	public void setInfo(HttpServletRequest request, Model model);
+	public String checkIdPw(MemberDTO dto);
+	public void secession(String id, HttpServletRequest request);
 }

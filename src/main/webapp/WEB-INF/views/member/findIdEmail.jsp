@@ -11,8 +11,8 @@
 	<jsp:include page="../default/header.jsp"></jsp:include>
 	<a href="findIdTel">가입된 전화번호로 찾기</a>
 	<form action="idEmailCheck" method="post">
-		이름 입력 : <input type="text" name="name"><br>
-		이메일 입력  : <input type="text" name="email"><br>
+		<input type="text" name="name" placeholder="이름을 입력하세요"><br>
+		<input type="text" name="email" placeholder="이메일을 입력하세요"><br>
 		<input type="submit" value="이메일 전송">
 	</form>
 </body>

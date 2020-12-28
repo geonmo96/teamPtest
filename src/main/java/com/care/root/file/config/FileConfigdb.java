@@ -17,7 +17,7 @@ public class FileConfigdb {
 	public DriverManagerDataSource memberDataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		ds.setUrl("jdbc:oracle:thin:@localhost:1522:xe");
 		ds.setUsername("c##geonmo");
 		ds.setPassword("1234");
 		return ds;

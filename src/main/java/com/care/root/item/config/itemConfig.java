@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 	@RequestMapping("item")
 public class itemConfig {
 	@RequestMapping("itemview")
-	public String itemView(String itemnum) {
-		return "/item/itemview?itemnum="+itemnum;
+	public String itemView() {
+		return "item/itemview";
 }
 	@RequestMapping("itemlist")
 	public String ItemListView() {
-		return "/item/list";
+		return "item/list";
 	}
 }

@@ -12,7 +12,20 @@
 		console.log(inputCode)
 		if(inputCode == ${authCode}){
 			alert("인증이 되었습니다.");
-			location.href="idView";
+			if("${find}" == "id"){
+				location.href="idView";
+			} else if("${find}" == "pw"){
+				var fo = document.createElement("form");
+				fo.setAttribute("method", "post");
+				fo.setAttribute("action", "modifyPwForm");
+				var id = document.createElement("input");
+				id.setAttribute("type", "hidden");
+				id.setAttribute("name", "id");
+				id.setAttribute("value", "${id}");
+				fo.appendChild(id);
+				document.body.appendChild(fo);
+				fo.submit();
+			}
 		} else {
 			alert("잘못 입력하셨습니다.");
 		}

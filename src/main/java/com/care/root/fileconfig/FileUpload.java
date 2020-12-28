@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.care.root.file.service.FileDAO;
 import com.care.root.file.service.FileDTO;
 import com.care.root.file.service.FileServiceImpl;
 
@@ -28,6 +27,8 @@ import com.care.root.file.service.FileServiceImpl;
 @Controller
 @RequestMapping("seller")
 public class FileUpload {
+	@Autowired FileServiceImpl fsvi;
+	@Autowired FileDTO fdto;
 	private final String IMAGE_REPO = "C:\\Users\\heamok\\Desktop\\hm\\image";
 	@RequestMapping("form")
 	public String form() {
@@ -35,7 +36,7 @@ public class FileUpload {
 
 	}
 	@RequestMapping("upload")
-	public ModelAndView upload(MultipartHttpServletRequest mul, 
+	public String upload(MultipartHttpServletRequest mul, 
 								HttpServletResponse response ,  @RequestParam final String itemName ,@RequestParam final String makerName,
 								@RequestParam final String brandName,@RequestParam final String makeRegion,@RequestParam final int kg,
 								@RequestParam final String itemRegion,@RequestParam final String itemValue ) {
@@ -47,19 +48,9 @@ public class FileUpload {
 			e.printStackTrace();
 		}
 		Map map = new HashMap();
-		FileDTO fdto = new FileDTO();
 		Enumeration enu = mul.getParameterNames();
-		while(enu.hasMoreElements()) {
-			
-			FileServiceImpl fsvi = new FileServiceImpl();
-			
-//			String itemName2 = itemName;
-//			String makerName2 = (String)enu.nextElement();
-//			String brandName2 = (String)enu.nextElement();
-//			String makeRegion2 = (String)enu.nextElement();
-//			String kg2 =  (String)enu.nextElement();
-//			String itemRegion2 =  (String)enu.nextElement();
-//			String itemValue2 =  (String)enu.nextElement();
+
+
 			System.out.println(itemName );
 			System.out.println(makerName );
 			System.out.println(brandName );
@@ -76,11 +67,8 @@ public class FileUpload {
 			fdto.setItemRegion(itemRegion);
 			fdto.setItemValue(itemValue);
 			
-			
-			
-			fsvi.updata(fdto);
-			
-		}
+		
+		fsvi.updata(fdto);
 		
 		int itemnum = fdto.getItemNum();
 		List fileList = fileProcess(mul);
@@ -88,7 +76,8 @@ public class FileUpload {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("map",map);
 		mv.setViewName("../item/itemview?itemnum="+itemnum);
-		return mv;
+		return "/item/itemview";
+
 	}
 	private List<String> 
 	fileProcess(MultipartHttpServletRequest mul){

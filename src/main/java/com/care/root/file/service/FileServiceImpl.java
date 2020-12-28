@@ -3,18 +3,24 @@ package com.care.root.file.service;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
-
+import com.care.root.file.filedao.FileDAO;
 
 @Service
+@Configurable
+@Repository 
 public class FileServiceImpl implements FileService{
 	@Autowired
 	FileDAO dao;
 
 	@Override
 	public void updata(FileDTO dto) {
-		dao.updata(dto);
+		System.out.println("임플 실행");
+		dao.upfile(dto);
+		System.out.println("임플 끝");
 		}
 
 	@Override

@@ -10,14 +10,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.care.root.file.service")
+@MapperScan(basePackages = "com.care.root.file.filedao")
 public class FileConfigdb {
 
 	@Bean
 	public DriverManagerDataSource memberDataSource() {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-		ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+		ds.setUrl("jdbc:oracle:thin:@localhost:1522:xe");
 		ds.setUsername("c##geonmo");
 		ds.setPassword("1234");
 		return ds;
@@ -29,7 +29,7 @@ public class FileConfigdb {
 		return ssf.getObject();
 	}
 	@Bean
-	public SqlSession memberSqlSession() throws Exception {
+	public SqlSession fileSqlSession() throws Exception {
 		return new SqlSessionTemplate(memberSqlSessionFactory());
 	}
 	

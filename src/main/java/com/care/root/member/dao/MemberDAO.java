@@ -1,5 +1,6 @@
 package com.care.root.member.dao;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -27,4 +28,7 @@ public interface MemberDAO {
 	
 	@Update("update member set pw = #{pw} where id = #{id}")
 	public void modifyPw(MemberDTO dto);
+	
+	@Delete("delete from member where id = #{id}")
+	public void secession(String id);
 }

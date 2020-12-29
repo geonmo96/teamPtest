@@ -1,6 +1,7 @@
 package com.care.root.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,6 @@ public class MemberController {
 	@Autowired KakaoService ks;
 	@Autowired NaverService ns;
 	@Autowired MailService mails;
-	
-	
 	@Autowired NaverSmsServiceImpl nss;
 	
 	@PostMapping(value = "sendSms", produces = "application/text;charset=utf-8")
@@ -153,5 +152,37 @@ public class MemberController {
 		model.addAttribute("id", id);
 		model.addAttribute("find", "pw");
 		return "/member/telCodeForm";
+	}
+	@RequestMapping("myInfo")
+	public String myInfo(HttpServletRequest request, Model model) {
+		ms.setInfo(request, model);
+		return "/member/myInfo";
+	}
+	@RequestMapping("inputPw")
+	public String inputPw(@RequestParam("message") String message, Model model) {
+		model.addAttribute("message", message);
+		return "/member/inputPw";
+	}
+	@PostMapping(value = "checkIdPw", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String checkIdPw(MemberDTO dto) {
+		return ms.checkIdPw(dto);
+	}
+	@RequestMapping("secession")
+	public String secession(@RequestParam("id") String id, HttpServletRequest request) {
+		ms.secession(id, request);
+		return "redirect:main";
+	}
+	@RequestMapping("signupSelect")
+	public String signupSelect() {
+		return "/member/signupSelect";
+	}
+	@RequestMapping("joinSeller")
+	public String joinSeller() {
+		return "/member/joinSeller";
+	}
+	@RequestMapping("signupFormSeller")
+	public String signupFormSeller() {
+		return "/member/signupFormSeller";
 	}
 }

@@ -38,7 +38,7 @@
 			<tr> <td> <input type="submit" value="로그인"> </td> </tr> 
 				
 			<tr> <td> <a href="findIdEmail">아이디 찾기</a> </td> <td> <a href="findPwEmail">비밀번호 찾기</a> </td> </tr> 
-			<tr> <td> <a href="join">회원가입</a>
+			<tr> <td> <a href="signupSelect">회원가입</a>
 		</table>
 		</form>
 	</div>

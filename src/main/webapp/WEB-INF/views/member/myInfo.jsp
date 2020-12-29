@@ -31,7 +31,7 @@
 				<tr> <td>비밀번호</td> <td><input type="button" onclick="inputPw()" value="비밀번호 변경"></td> </tr>
 				<tr> <td>이메일 주소</td> <td>${dto.email }</td> </tr>
 				<tr> <td>휴대폰 정보</td> <td>${dto.m_tel }</td> </tr>
-				<tr> <td>주소</td> <td>${dto.m_address }</td> </tr>
+				<tr> <td>기본   주소</td> <td>${dto.m_address }</td> </tr>
 			</table>
 		</div>
 	</div>

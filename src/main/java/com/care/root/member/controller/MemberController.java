@@ -173,4 +173,16 @@ public class MemberController {
 		ms.secession(id, request);
 		return "redirect:main";
 	}
+	@RequestMapping("signupSelect")
+	public String signupSelect() {
+		return "/member/signupSelect";
+	}
+	@RequestMapping("joinSeller")
+	public String joinSeller() {
+		return "/member/joinSeller";
+	}
+	@RequestMapping("signupFormSeller")
+	public String signupFormSeller() {
+		return "/member/signupFormSeller";
+	}
 }

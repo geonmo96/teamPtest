@@ -23,6 +23,8 @@
 			location.href="signupForm";
 		}
 	}
+
+	
 	var telAuthCodeCheck = false;
 	function chkCheck(){
 		if(!idCheck()){

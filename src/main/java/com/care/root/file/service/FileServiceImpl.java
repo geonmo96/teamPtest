@@ -43,4 +43,12 @@ public class FileServiceImpl implements FileService{
 		ArrayList<String> allnumlist = dao.itemList();
 		return allnumlist;
 	}
+	@Override
+	public String itemresult(String itemname) {
+		String itemnum = dao.viewnum(itemname);
+		return itemnum;
+		
+	}
+	
+
 }

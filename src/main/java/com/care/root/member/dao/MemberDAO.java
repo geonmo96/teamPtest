@@ -10,8 +10,10 @@ import com.care.root.member.dto.MemberDTO;
 
 @Repository
 public interface MemberDAO {
-	@Insert("insert into member(id, pw, name, m_tel, m_address, email) values(#{id}, #{pw}, #{name}, #{m_tel}, #{m_address}, #{email} )")
+	@Insert("insert into member(id, pw, name, m_tel, m_address, email, member_code) values(#{id}, #{pw}, #{name}, #{m_tel}, #{m_address}, #{email}, #{member_code} )")
 	public void join(MemberDTO dto);
+	@Insert("insert into sales_member(s_id, s_code) values(#{id}, #{member_code})")
+	public void joinSales(MemberDTO dto);
 	
 	@Select("select id from member where id = #{id}")
 	public String dbIdCheck(String id);
@@ -31,4 +33,6 @@ public interface MemberDAO {
 	
 	@Delete("delete from member where id = #{id}")
 	public void secession(String id);
+	@Delete("delete from sales_member where id = #{id}")
+	public void secessionSales(String id);
 }

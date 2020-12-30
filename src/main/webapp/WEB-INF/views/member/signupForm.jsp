@@ -18,6 +18,7 @@
 	<div>
 		
 		<form action="signup" method="post" id="fo">
+			<input type="hidden" name="member_code" value="${param.member_code }">
 			<table>
 				<tr> <td>아이디</td> 
 					<td>

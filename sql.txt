@@ -1,0 +1,41 @@
+맴버 테이블;
+create table member(
+id varchar2(10) primary key,
+pw varchar2(20) not null,
+name varchar2(10) not null,
+m_address varchar2(100) not null,
+m_tel varchar2(15) not null,
+email varchar2(20) not null,
+member_code varchar2(5) not null
+);
+판매원 테이블;
+create table sales_member(
+s_id varchar2(10) primary key
+, s_code varchar2(5) not null check(s_code = 200)
+);
+판매원 제약조건;
+alter table sales_member add constraint member_id foreign key (s_id) references member(id) on delete cascade;
+
+아이템 테이블 제약조건;
+alter table itemlist add constraint sales_member_id foreign key (i_id) references sales_member(s_id);
+
+아이템 리스트 테이블;
+create table itemlist(
+itemnum number(38) primary key,
+itemname varchar2(100),
+makername varchar2(100),
+brandname varchar2(100),
+kg number(38),
+itemregion varchar2(100),
+itemvalue varchar2(100),
+categorynum number(38),
+itemprice number(38),
+i_id varchar2(10));
+
+아이템 시퀀스 ;
+create sequence itemn
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocycle;

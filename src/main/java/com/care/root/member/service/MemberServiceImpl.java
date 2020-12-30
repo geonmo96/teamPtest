@@ -20,6 +20,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void join(MemberDTO dto) {
 		dao.join(dto);
+		if(dto.getMember_code().equals("200")) {
+			dao.joinSales(dto);
+		}
 	}
 	@Override
 	public String dbIdCheck(String id) {

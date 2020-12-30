@@ -16,6 +16,13 @@ s_id varchar2(10) primary key
 판매원 제약조건;
 alter table sales_member add constraint member_id foreign key (s_id) references member(id) on delete cascade;
 
+외부 로그인(카카오, 네이버);
+create table external_member(
+e_id number(15) primary key,
+e_name varchar2(20)not null
+);
+
+-------------------------------------------------------------------------------------------------------
 아이템 테이블 제약조건;
 alter table itemlist add constraint sales_member_id foreign key (i_id) references sales_member(s_id);
 

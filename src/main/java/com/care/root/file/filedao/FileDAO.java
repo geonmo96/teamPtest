@@ -10,8 +10,8 @@ import com.care.root.file.service.FileDTO;
 
 @Repository
 public interface FileDAO {
-		@Insert("insert into itemlist(itemnum, itemName, makerName, brandName, makeRegion, kg, itemRegion, itemValue) "
-				+ "values(itemn.nextval, #{itemName}, #{makerName}, #{brandName}, #{makeRegion}, #{kg}, #{itemRegion}, #{itemValue} )")
+		@Insert("insert into itemlist(itemnum, itemName, makerName, brandName, makeRegion, kg, itemRegion, itemValue, itemprice, categorynum, kgpic) "
+				+ "values(itemn.nextval, #{itemName}, #{makerName}, #{brandName}, #{makeRegion}, #{kg}, #{itemRegion}, #{itemValue}, #{itemprice}, #{categorynum}, #{kgpic})")
 		public void upfile(FileDTO dto);
 		
 		@Select("select * from itemlist where itemnum = #{itemnum}")

@@ -34,7 +34,7 @@ import com.care.root.file.service.FileServiceImpl;
 public class FileUpload {
 	@Autowired FileServiceImpl fsvi;
 	@Autowired FileDTO fdto;
-	private final String IMAGE_REPO = "C:\\Users\\heamok\\Desktop\\hm\\image";
+	private final String IMAGE_REPO = "C:\\Users\\heamok\\Desktop\\hm\\workproject\\teamProject\\src\\main\\resources\\img";
 	@RequestMapping("form")
 	public String form() {
 		return "/seller/seller";
@@ -61,9 +61,16 @@ public class FileUpload {
 			System.out.println(mul.getParameter("kg"));
 			System.out.println(mul.getParameter("itemRegion") );
 			System.out.println(mul.getParameter("itemValue"));
+			System.out.println(mul.getParameter("kgpic"));
 			
 			String kg2 = mul.getParameter("kg");
 			int kg = Integer.parseInt(kg2);
+			String category2 = mul.getParameter("categorynum");
+			int categorynum = Integer.parseInt(category2);
+			String itemprice2 = mul.getParameter("itemprice");
+			int itemprice = Integer.parseInt(itemprice2);
+			String kgpic2 = mul.getParameter("kgpic");
+			int kgpic3 = Integer.parseInt(kgpic2);
 			fdto.setItemName(mul.getParameter("itemName"));
 			fdto.setMakerName(mul.getParameter("makerName"));
 			fdto.setBrandName(mul.getParameter("brandName"));
@@ -71,6 +78,9 @@ public class FileUpload {
 			fdto.setKg(kg);
 			fdto.setItemRegion(mul.getParameter("itemRegion"));
 			fdto.setItemValue(mul.getParameter("itemValue"));
+			fdto.setKgpic(kgpic3);
+			fdto.setCategorynum(categorynum);
+			fdto.setItemprice(itemprice);
 			
 		
 		fsvi.updata(fdto);
@@ -78,6 +88,8 @@ public class FileUpload {
 		String itemnum = fsvi.itemresult(mul.getParameter("itemName"));
 		System.out.println(itemnum);
 		fdto.setItemNum(Integer.parseInt(itemnum));
+		List fileList = fileProcess(mul);
+		map.put("fileList", fileList);
 		req.setAttribute("fdto", fdto);
 		RequestDispatcher rd = req.getRequestDispatcher("/item/itemview");
         try {
@@ -87,13 +99,7 @@ public class FileUpload {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
-		
-		
-		
-		List fileList = fileProcess(mul);
-		map.put("fileList", fileList);
+        
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("map",map);
 		mv.setViewName("/item/itemview");
@@ -111,7 +117,7 @@ public class FileUpload {
 				String fileName = fileNames.next();
 				MultipartFile mFile = mul.getFile(fileName);
 				String originFile = fsvi.itemresult(itemName);;
-				fileList.add(originFile);
+				fileList.add(originFile+".jpg");
 				File file = new File(IMAGE_REPO+"\\"+originFile+".jpg");
 				file.getParentFile().mkdir();
 				if(mFile.getSize() != 0) {

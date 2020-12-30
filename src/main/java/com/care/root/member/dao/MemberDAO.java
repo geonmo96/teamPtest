@@ -17,7 +17,7 @@ public interface MemberDAO {
 	
 	@Select("select id from member where id = #{id}")
 	public String dbIdCheck(String id);
-	@Select("select id, pw from member where id = #{id}")
+	@Select("select * from member where id = #{id}")
 	public MemberDTO login(MemberDTO dto);
 	@Select("select name from member where email = #{email}")
 	public String selectNameToEmail(String email);

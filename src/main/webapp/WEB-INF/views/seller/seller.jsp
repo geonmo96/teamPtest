@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html" charset="UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="<%= request.getContextPath()%>"/>
 <!DOCTYPE html>
@@ -15,15 +14,21 @@ body {
 
 	font-size: 80%;
 }
-
 </style>
 </head>
 <body>
+	<%response.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("utf-8"); %>
 	<jsp:include page="../default/header.jsp"></jsp:include>
 
 	<c:set var="path" value="${pageContext.request.contextPath }"/>
 <h3>상품 등록</h3>
 <form action="${path}/seller/upload" method="post" enctype="multipart/form-data">
+	<select class="category" name="category">
+	<option value="0">전체</option>
+	<option value="100">야채</option>
+	<option value="200">고기</option>
+	</select><br>
 	<label>상품명 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 
 	</label><input type="text" name="itemName"><br>
 	<label>제조사 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:

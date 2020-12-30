@@ -20,7 +20,9 @@ public interface FileDAO {
 		@Select("select filenum from itemlist;")
 		public ArrayList<String> itemList();
 
-
+		@Select("select itemnum from itemlist where itemname = #{itemname}")
+		public String viewnum(String itemname);
+		
 
 
 }

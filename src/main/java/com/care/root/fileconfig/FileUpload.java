@@ -1,7 +1,7 @@
 package com.care.root.fileconfig;
 
 import java.io.File;
-
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -10,6 +10,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ import com.care.root.file.service.FileDTO;
 import com.care.root.file.service.FileServiceImpl;
 
 
+
+
 @Controller
 @RequestMapping("seller")
 public class FileUpload {
@@ -36,11 +41,9 @@ public class FileUpload {
 
 	}
 	@RequestMapping("upload")
-	public String upload(MultipartHttpServletRequest mul, 
-								HttpServletResponse response ,  @RequestParam final String itemName ,@RequestParam final String makerName,
-								@RequestParam final String brandName,@RequestParam final String makeRegion,@RequestParam final int kg,
-								@RequestParam final String itemRegion,@RequestParam final String itemValue ) {
-
+	public ModelAndView upload(HttpServletRequest req, MultipartHttpServletRequest mul, 
+								HttpServletResponse response ) {
+		
 		
 		try {
 			mul.setCharacterEncoding("utf-8");
@@ -50,55 +53,75 @@ public class FileUpload {
 		Map map = new HashMap();
 		Enumeration enu = mul.getParameterNames();
 
-
-			System.out.println(itemName );
-			System.out.println(makerName );
-			System.out.println(brandName );
-			System.out.println(makeRegion );
-			System.out.println(kg);
-			System.out.println(itemRegion );
-			System.out.println(itemValue);
+			System.out.println(mul.getParameter("category"));
+			System.out.println(mul.getParameter("itemName"));
+			System.out.println(mul.getParameter("makerName"));
+			System.out.println(mul.getParameter("brandName"));
+			System.out.println(mul.getParameter("makeRegion"));
+			System.out.println(mul.getParameter("kg"));
+			System.out.println(mul.getParameter("itemRegion") );
+			System.out.println(mul.getParameter("itemValue"));
 			
-			fdto.setItemName(itemName);
-			fdto.setMakerName(makerName);
-			fdto.setBrandName(brandName);
-			fdto.setMakeRegion(makeRegion);
+			String kg2 = mul.getParameter("kg");
+			int kg = Integer.parseInt(kg2);
+			fdto.setItemName(mul.getParameter("itemName"));
+			fdto.setMakerName(mul.getParameter("makerName"));
+			fdto.setBrandName(mul.getParameter("brandName"));
+			fdto.setMakeRegion(mul.getParameter("makeRegion"));
 			fdto.setKg(kg);
-			fdto.setItemRegion(itemRegion);
-			fdto.setItemValue(itemValue);
+			fdto.setItemRegion(mul.getParameter("itemRegion"));
+			fdto.setItemValue(mul.getParameter("itemValue"));
 			
 		
 		fsvi.updata(fdto);
 		
-		int itemnum = fdto.getItemNum();
+		String itemnum = fsvi.itemresult(mul.getParameter("itemName"));
+		System.out.println(itemnum);
+		fdto.setItemNum(Integer.parseInt(itemnum));
+		req.setAttribute("fdto", fdto);
+		RequestDispatcher rd = req.getRequestDispatcher("/item/itemview");
+        try {
+			rd.forward(req, response);
+		} catch (ServletException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
+		
+		
+		
 		List fileList = fileProcess(mul);
 		map.put("fileList", fileList);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("map",map);
-		mv.setViewName("../item/itemview?itemnum="+itemnum);
-		return "/item/itemview";
+		mv.setViewName("/item/itemview");
+		
+		
+		return mv;
 
 	}
 	private List<String> 
 	fileProcess(MultipartHttpServletRequest mul){
-			List<String> fileList = new ArrayList<String>();
+				String itemName = fdto.getItemName();
+				List<String> fileList = new ArrayList<String>();
 				Iterator<String> fileNames = mul.getFileNames();
-				while(fileNames.hasNext()) {
+			//	while(fileNames.hasNext()) {
 				String fileName = fileNames.next();
 				MultipartFile mFile = mul.getFile(fileName);
-				String originFile = mFile.getOriginalFilename();
+				String originFile = fsvi.itemresult(itemName);;
 				fileList.add(originFile);
-				File file = new File(IMAGE_REPO+"\\"+fileName);
+				File file = new File(IMAGE_REPO+"\\"+originFile+".jpg");
 				file.getParentFile().mkdir();
 				if(mFile.getSize() != 0) {
 					try {
-						
-						mFile.transferTo(new File(IMAGE_REPO+"\\"+originFile));
+						mFile.transferTo(new File(IMAGE_REPO+"\\"+originFile+".jpg"));
 					} catch (Exception e) {
 						e.printStackTrace();
 					} 
 				}
-				}
+			//	}
 				return fileList;
 	}
 	

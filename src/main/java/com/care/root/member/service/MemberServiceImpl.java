@@ -20,6 +20,9 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public void join(MemberDTO dto) {
 		dao.join(dto);
+		if(dto.getMember_code().equals("200")) {
+			dao.joinSales(dto);
+		}
 	}
 	@Override
 	public String dbIdCheck(String id) {
@@ -45,13 +48,16 @@ public class MemberServiceImpl implements MemberService{
 			//TODO 메인페이지 수정 예정
 			HttpSession session = request.getSession();
 			session.setAttribute("USER", dbDto.getId());
+			if(dbDto.getMember_code().equals("200")) {
+				session.setAttribute("sales", "sales member");
+			}
 			return "main";
 		}
 	}
 	@Override
 	public void logout(HttpServletRequest request) {
 		HttpSession session = (HttpSession) request.getSession();
-		session.removeAttribute("USER");
+		session.invalidate();
 	}
 	@Override
 	public void checkEmail(String name, String email, Model model) {

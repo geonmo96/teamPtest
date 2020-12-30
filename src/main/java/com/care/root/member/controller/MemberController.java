@@ -37,7 +37,8 @@ public class MemberController {
 		return "/member/join";
 	}
 	@RequestMapping("signupForm")
-	public String signupForm() {
+	public String signupForm(@RequestParam("member_code") String member_code, Model model) {
+		model.addAttribute("member_code", member_code);
 		return "/member/signupForm";
 	}
 	@PostMapping("signup")
@@ -180,9 +181,5 @@ public class MemberController {
 	@RequestMapping("joinSeller")
 	public String joinSeller() {
 		return "/member/joinSeller";
-	}
-	@RequestMapping("signupFormSeller")
-	public String signupFormSeller() {
-		return "/member/signupFormSeller";
 	}
 }

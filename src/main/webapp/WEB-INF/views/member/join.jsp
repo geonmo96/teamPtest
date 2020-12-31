@@ -15,7 +15,10 @@ img {
 	max-width: 90%;
 	height: auto !important;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 .button {
 	background-color: #4CAF50;
 	border: none;
@@ -30,13 +33,19 @@ img {
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 .button1 {
 	background-color: white;
 	color: black;
 	border: 2px solid #555555;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 .button1:hover {
 	background-color: #555555;
 	color: white;
@@ -52,10 +61,17 @@ img {
    <h1></h1>
    <table width="100%">
    <tr>
+<<<<<<< HEAD
    <td width="25%"><img src="../resources/images/joing_benefit/benefit_kakao.png"></td>
    <td width="25%"><img src="../resources/images/joing_benefit/benefit_lifeMember.png"></td>
    <td width="25%"><img src="../resources/images/joing_benefit/benefit_member.png"></td>
    <td width="25%"><img src="../resources/images/joing_benefit/benefit_PhotoReview.png"></td>
+=======
+   <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_kakao.png"></td>
+   <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_lifeMember.png"></td>
+   <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_member.png"></td>
+   <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_PhotoReview.png"></td>
+>>>>>>> master
    </tr>
    </table>
    <p style="text-align:center; font-size:10px;">

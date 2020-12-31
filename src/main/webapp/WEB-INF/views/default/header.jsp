@@ -47,10 +47,15 @@ a:hover {
 					<c:choose>
 						<c:when test="${sessionScope.USER == null}">
 							<a href="${pageContext.request.contextPath }/member/loginForm">로그인</a>&nbsp;&nbsp;
+<<<<<<< HEAD
 							<a href="${pageContext.request.contextPath }/member/join">회원가입</a>&nbsp;&nbsp;
+=======
+							<a href="${pageContext.request.contextPath }/member/signupSelect">회원가입</a>&nbsp;&nbsp;
+>>>>>>> master
 					</c:when>
 					<c:otherwise>
-						<a href="#">${sessionScope.USER }님</a>&nbsp;&nbsp;
+						${sessionScope.USER }님&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath }/member/myInfo">마이페이지</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/member/logout">로그아웃</a>
 					</c:otherwise>
 					</c:choose></td>
@@ -72,5 +77,6 @@ a:hover {
 		</p>
 		</div>
 	</div>
+	<br><br>
 </body>
 </html>

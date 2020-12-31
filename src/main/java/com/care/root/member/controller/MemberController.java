@@ -1,6 +1,7 @@
 package com.care.root.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,6 @@ public class MemberController {
 	@Autowired KakaoService ks;
 	@Autowired NaverService ns;
 	@Autowired MailService mails;
-	
-	
 	@Autowired NaverSmsServiceImpl nss;
 	
 	@PostMapping(value = "sendSms", produces = "application/text;charset=utf-8")
@@ -33,7 +32,10 @@ public class MemberController {
 	public String sendSms(@RequestParam("m_tel") String m_tel) {
 		return ms.send6Num(m_tel);
 	}
-	
+	@RequestMapping("join")
+	public String join() {
+		return "/member/join";
+	}
 	@RequestMapping("signupForm")
 	public String signupForm() {
 		return "/member/signupForm";
@@ -101,8 +103,8 @@ public class MemberController {
 		return "/member/findPwEmail";
 	}
 	@RequestMapping("pwEmailCheck")
-	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model) {
-		ms.checkId(name, id, model);
+	public String findPwToEmail(@RequestParam("name") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+		ms.checkId(name, id, model, "email", request);
 		return "/member/emailCodeForm";
 	}
 	@PostMapping("modifyPwForm")
@@ -128,10 +130,59 @@ public class MemberController {
 	@PostMapping("idAuthCheck")
 	public String idAuthCheck(@RequestParam("m_tel") String m_tel, Model model) {
 		model.addAttribute("authCode", ms.send6Num(m_tel));
+		model.addAttribute("find", "id");
 		return "/member/telCodeForm";
 	}
 	@RequestMapping("idView")
 	public String idView() {
 		return "/member/idView";
+	}
+	@RequestMapping("findPwTel")
+	public String findPwTel() {
+		return "/member/findPwTel";
+	}
+	@PostMapping(value = "findPwTelCheck", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String findPwTelCheck(@RequestParam("name") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+		return ms.checkId(name, id, model, "tel", request);
+		
+	}
+	@PostMapping("telCodeForm")
+	public String telCodeForm(@RequestParam("id") String id, Model model) {
+		model.addAttribute("id", id);
+		model.addAttribute("find", "pw");
+		return "/member/telCodeForm";
+	}
+	@RequestMapping("myInfo")
+	public String myInfo(HttpServletRequest request, Model model) {
+		ms.setInfo(request, model);
+		return "/member/myInfo";
+	}
+	@RequestMapping("inputPw")
+	public String inputPw(@RequestParam("message") String message, Model model) {
+		model.addAttribute("message", message);
+		return "/member/inputPw";
+	}
+	@PostMapping(value = "checkIdPw", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String checkIdPw(MemberDTO dto) {
+		return ms.checkIdPw(dto);
+	}
+	@RequestMapping("secession")
+	public String secession(@RequestParam("id") String id, HttpServletRequest request) {
+		ms.secession(id, request);
+		return "redirect:main";
+	}
+	@RequestMapping("signupSelect")
+	public String signupSelect() {
+		return "/member/signupSelect";
+	}
+	@RequestMapping("joinSeller")
+	public String joinSeller() {
+		return "/member/joinSeller";
+	}
+	@RequestMapping("signupFormSeller")
+	public String signupFormSeller() {
+		return "/member/signupFormSeller";
 	}
 }

@@ -20,15 +20,15 @@
 </script>
 <body>
 	<jsp:include page="../default/header.jsp"></jsp:include>
+	<a href="findPwTel">가입된 전화번호로 찾기</a>
 	<form action="pwEmailCheck" method="post" id="fo">
 		<table>
 			<tr>
-				<td>이름 </td>
-				<td><input type="text" name="name" id="name"> </td>
+				<td><input type="text" name="name" id="name" placeholder="이름을 입력하세요"> </td>
 			</tr>
 			<tr>
 				<td>아이디 </td>
-				<td><input type="text" name="id" id="id"> </td>
+				<td><input type="text" name="id" id="id" placeholder="아이디를 입력하세요"> </td>
 			</tr>
 		</table>
 		<input type="button" value="비밀번호 찾기" onclick="submitBtn()">

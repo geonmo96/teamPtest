@@ -44,9 +44,10 @@
 	};%>
 	</td></tr>
 	<tr><td>상품설명</td><td><%=fdto.getItemValue() %></td></tr>
-	<tr><td>상품사진</td><td>		<img src="${path }/imgload?imageFileName=${imageFileName}"
-												style="width:150px;">
-		<a href="${path }/imgload?imageFileName=${imageFileName}">${imageFileName }</a></td></tr>
+	<tr><td>상품사진</td><td>		<img src="../../img/<%=fdto.getItemNum()%>.jpg" style="width:150px;" ></td></tr>
+	<tr><td><a href="#">구매</a></td><td><a href="#">장바구니</a></td><td><a href=../item/list>목록보기</a>
+
+
 
 	</table>	
 </body>

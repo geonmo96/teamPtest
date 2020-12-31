@@ -11,19 +11,19 @@
 </head>
 <body>
 <jsp:include page="../default/header.jsp"></jsp:include>
-<%FileDTO dto = new FileDTO(); 
-FileServiceImpl fisv = new FileServiceImpl();
-int fileListNum = fisv.fileList(); 
-if(fileListNum == 0){
-%>
-<script type="text/javascript">
-alert('리스트 없음');
-</script>
-<%}else if(fileListNum > 0){
+	<% 
+		FileServiceImpl fisv = new FileServiceImpl();
+		int fileListNum = fisv.fileList(); 
+		if(fileListNum == 0){
+	%>
+	<script type="text/javascript">
+	alert('리스트 없음');
+	</script>
+	<%}else if(fileListNum > 0){
 	ArrayList<String> itemnumbers = fisv.fileallnum();
 	for(int i = 0; i < fileListNum ; i ++){
-	String itemnum = itemnumbers.get(i);%>
-	<a href="/seller/itemView/itme?=<%=itemnum %>"><img src=" <%=itemnum%>.jpg"></a>
+	      String itemnum = itemnumbers.get(i);%>
+	<a href="/seller/itemView/itme?=<%=itemnum %>"><img src="../../img/<%=itemnum%>.jpg" style="width:150px;" ></a>
 	<% } 
 	}
 	%>

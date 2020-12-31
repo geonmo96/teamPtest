@@ -34,7 +34,7 @@ import com.care.root.file.service.FileServiceImpl;
 public class FileUpload {
 	@Autowired FileServiceImpl fsvi;
 	@Autowired FileDTO fdto;
-	private final String IMAGE_REPO = "C:\\Users\\heamok\\Desktop\\hm\\workproject\\teamProject\\src\\main\\resources\\img";
+	private final String IMAGE_REPO = "C:\\Users\\heamok\\Desktop\\hm\\workproject\\teamProject\\src\\main\\webapp\\resources\\images";
 	@RequestMapping("form")
 	public String form() {
 		return "/seller/seller";
@@ -82,7 +82,6 @@ public class FileUpload {
 			fdto.setCategorynum(categorynum);
 			fdto.setItemprice(itemprice);
 			
-		
 		fsvi.updata(fdto);
 		
 		String itemnum = fsvi.itemresult(mul.getParameter("itemName"));
@@ -117,8 +116,8 @@ public class FileUpload {
 				String fileName = fileNames.next();
 				MultipartFile mFile = mul.getFile(fileName);
 				String originFile = fsvi.itemresult(itemName);;
-				fileList.add(originFile+".jpg");
-				File file = new File(IMAGE_REPO+"\\"+originFile+".jpg");
+				fileList.add(originFile);
+				File file = new File(IMAGE_REPO+"\\"+originFile);
 				file.getParentFile().mkdir();
 				if(mFile.getSize() != 0) {
 					try {

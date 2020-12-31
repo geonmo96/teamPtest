@@ -65,9 +65,9 @@ a:hover {
 		<div class="menu">	
 		<p class="menu_list">
 		<b>
-			<a href="#">산지직송</a>&nbsp;&nbsp;
-			<a href="#">지역명물</a>&nbsp;&nbsp;
-			<a href="#">차&음료</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/item/catelist?cate=1">산지직송</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/item/catelist?cate=2">지역명물</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/item/catelist?cate=3">차&음료</a>&nbsp;&nbsp;
 			<a href="#">묻고 답하기</a>&nbsp;&nbsp;
 			<a href="${pageContext.request.contextPath }/board/listView">공지사항</a>&nbsp;&nbsp;
 			<a href="#">리뷰이벤트</a>&nbsp;&nbsp;

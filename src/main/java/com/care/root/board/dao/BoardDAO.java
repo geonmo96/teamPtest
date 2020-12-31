@@ -2,6 +2,8 @@ package com.care.root.board.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -18,4 +20,12 @@ public interface BoardDAO {
 	
 	@Update("update board set hit = hit + 1 where write_no = #{write_no}")
 	public void hit(String write_no);
+	@Update("update board set title = #{title}, content = #{content} where write_no = #{write_no}")
+	public void modify(BoardDTO boardDto);
+	
+	@Delete("delete from board where write_no = #{write_no}")
+	public void delete(String write_no);
+	
+	@Insert("insert into board(write_no, title, content) values(board_seq.nextval, #{title}, #{content})")
+	public void write(BoardDTO boardDto);
 }

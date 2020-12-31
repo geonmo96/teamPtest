@@ -23,4 +23,20 @@ public class BoardServiceImpl {
 		BoardDTO boardDto = boardDao.contentView(write_no);
 		model.addAttribute("boardDto", boardDto);
 	}
+	
+	public void modifyForm(Model model, String write_no) {
+		model.addAttribute("boardDto", boardDao.contentView(write_no));
+	}
+	public void modify(Model model, BoardDTO boardDto) {
+		boardDao.modify(boardDto);
+		model.addAttribute("write_no", boardDto.getWrite_no());
+	}
+	
+	public void delete(String write_no) {
+		boardDao.delete(write_no);
+	}
+	
+	public void write(BoardDTO boardDto) {
+		boardDao.write(boardDto);
+	}
 }

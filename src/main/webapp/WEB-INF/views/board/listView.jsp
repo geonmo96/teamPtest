@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function writeNotice(){
+		location.href="writeForm";
+	}
+</script>
 </head>
 <body>
 	<jsp:include page="../default/header.jsp"></jsp:include>
@@ -21,6 +26,9 @@
 				</c:forEach>
 			</tr>
 		</table>
+		<c:if test="${sessionScope.admin == 'admin' }">
+			<input type="button" onclick="writeNotice()" value="공지사항 등록">
+		</c:if>
 	</div>
 </body>
 </html>

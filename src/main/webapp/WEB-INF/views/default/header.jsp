@@ -47,7 +47,8 @@ a:hover {
 					<c:choose>
 						<c:when test="${sessionScope.USER == null}">
 							<a href="${pageContext.request.contextPath }/member/loginForm">로그인</a>&nbsp;&nbsp;
-							<a href="${pageContext.request.contextPath }/member/signupSelect">회원가입</a>&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath }/member/signupSelect">회원가입</a>&nbsp;&nbsp;
+
 					</c:when>
 					<c:otherwise>
 						${sessionScope.USER }님&nbsp;&nbsp;
@@ -76,5 +77,6 @@ a:hover {
 		</p>
 		</div>
 	</div>
+	<br><br>
 </body>
 </html>

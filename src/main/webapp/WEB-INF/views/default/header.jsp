@@ -69,7 +69,7 @@ a:hover {
 			<a href="#">지역명물</a>&nbsp;&nbsp;
 			<a href="#">차&음료</a>&nbsp;&nbsp;
 			<a href="#">묻고 답하기</a>&nbsp;&nbsp;
-			<a href="#">공지사항</a>&nbsp;&nbsp;
+			<a href="${pageContext.request.contextPath }/board/listView">공지사항</a>&nbsp;&nbsp;
 			<a href="#">리뷰이벤트</a>&nbsp;&nbsp;
 			<a href="#">쇼핑스토리</a>&nbsp;&nbsp;
 			<a href="#">판매자정보</a>

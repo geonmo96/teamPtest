@@ -49,8 +49,11 @@ public class MemberServiceImpl implements MemberService{
 			HttpSession session = request.getSession();
 			session.setAttribute("USER", dbDto.getId());
 			session.setAttribute("login", "local");
-			if(dbDto.getMember_code().equals("200")) {
+			if(dbDto.getMember_code().equals("200") || dbDto.getMember_code().equals("1000")) {
 				session.setAttribute("sales", "sales member");
+			}
+			if(dbDto.getMember_code().equals("1000")) {
+				session.setAttribute("admin", "admin");
 			}
 			return "main";
 		}

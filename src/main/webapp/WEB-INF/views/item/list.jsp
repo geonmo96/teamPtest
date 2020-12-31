@@ -1,3 +1,4 @@
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.care.root.file.service.FileServiceImpl"%>
 <%@page import="com.care.root.file.service.FileDTO"%>
@@ -10,25 +11,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="../default/header.jsp"></jsp:include>
-	<% 
-		FileServiceImpl fisv = new FileServiceImpl();
-		int fileListNum = fisv.fileList(); 
-		if(fileListNum == 0){
-	%>
-	<script type="text/javascript">
-	alert('리스트 없음');
-	</script>
-	<%}else if(fileListNum > 0){
-	ArrayList<String> itemnumbers = fisv.fileallnum();
-	for(int i = 0; i < fileListNum ; i ++){
-	      String itemnum = itemnumbers.get(i);%>
-	<a href="/seller/itemView/itme?=<%=itemnum %>"><img src="../../img/<%=itemnum%>.jpg" style="width:150px;" ></a>
-	<% } 
-	}
-	%>
-
-
-
+ 	
+	<jsp:include page="../default/header.jsp"></jsp:include>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<table border = "1">
+	<c:forEach var="item" items="${alllist }" begin="0" end="${allnum }" varStatus="number">
+	<td><a href="itemview?itemnum=${alllist.get(number.index)}"> <img src="../../img/${alllist.get(number.index)}.jpg" style="width:150px;" ></a></td>
+	</c:forEach>
+	</table>
 </body>
 </html>

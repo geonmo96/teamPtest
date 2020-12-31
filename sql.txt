@@ -21,7 +21,22 @@ create table external_member(
 e_id number(15) primary key,
 e_name varchar2(20)not null
 );
+-------------------------------------------------------------------------------------------------------
+공지사항 테이블;
+create table board(
+write_no number(10) primary key,
+title varchar2(100),
+content varchar2(300),
+savedate date default sysdate,
+hit number(10) default 0
+);
+공지사항 시퀀스;
+create sequence board_seq; 
+공지사항 test;
+insert into board(write_no, title, content) values(board_seq.nextval, 'test_title', 'test_content');
 
+admin계정;
+insert into member values('admin', 'admin', 'admin', '우편번호/주소/상세주소', '전화번호', 'admin@naver.com', '1000');
 -------------------------------------------------------------------------------------------------------
 아이템 테이블 제약조건;
 alter table itemlist add constraint sales_member_id foreign key (i_id) references sales_member(s_id);

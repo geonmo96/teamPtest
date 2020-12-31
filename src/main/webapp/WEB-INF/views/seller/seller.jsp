@@ -7,14 +7,6 @@
 <meta charset="UTF-8">
 <title>upload Form</title>
 
-<style>
-body {
-
-	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
-
-	font-size: 80%;
-}
-</style>
 </head>
 <body>
 	<%response.setCharacterEncoding("utf-8");

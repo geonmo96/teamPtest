@@ -13,7 +13,7 @@ import com.care.root.board.dto.BoardDTO;
 @Repository
 public interface BoardDAO {
 	
-	@Select("select * from board")
+	@Select("select * from board order by write_no desc")
 	public ArrayList<BoardDTO> listView();
 	@Select("select * from board where write_no = #{write_no}")
 	public BoardDTO contentView(String write_no);

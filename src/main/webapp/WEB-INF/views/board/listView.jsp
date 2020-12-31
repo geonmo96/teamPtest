@@ -18,13 +18,16 @@
 		<table border="1">
 			  
 			<tr> <th>제목</th> <th>조회수</th> <th>작성일</th> </tr>
-			<tr>
-				<c:forEach items="${list }" var="boardDto">
+			
+			<c:forEach items="${list }" var="boardDto">
+				<tr>
 					<td><a href="contentView?write_no=${boardDto.write_no }">${boardDto.title }</a></td>
 					<td>${boardDto.hit }</td>
 					<td>${boardDto.savedate }</td>
-				</c:forEach>
-			</tr>
+					
+				</tr>
+			</c:forEach>
+			
 		</table>
 		<c:if test="${sessionScope.admin == 'admin' }">
 			<input type="button" onclick="writeNotice()" value="공지사항 등록">

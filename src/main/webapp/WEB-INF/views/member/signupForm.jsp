@@ -105,8 +105,12 @@ input:focus {
 					<input type="button" value="회원가입" onclick="chkCheck()"></td>
 				</tr>
 			</table>
+<<<<<<< HEAD
+		<input type="button" value="회원가입" onclick="chkCheck()">
+=======
 			
 		
+>>>>>>> master
 		</form>
 	</div>
 </body>

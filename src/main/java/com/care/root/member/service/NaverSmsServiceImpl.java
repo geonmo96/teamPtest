@@ -37,7 +37,7 @@ public class NaverSmsServiceImpl {
 			smsRequestDto.setType("SMS");
 			smsRequestDto.setContentType("COMM");
 			smsRequestDto.setCountryCode("82");
-			smsRequestDto.setFrom(recipientPhoneNumber);
+			smsRequestDto.setFrom("01091124329");
 			smsRequestDto.setContent(content);
 			List<MessagesRequestDto> messages = new ArrayList<MessagesRequestDto>();
 			MessagesRequestDto message = new MessagesRequestDto();

@@ -15,10 +15,7 @@ img {
 	max-width: 90%;
 	height: auto !important;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 .button {
 	background-color: #4CAF50;
 	border: none;
@@ -33,19 +30,13 @@ img {
 	transition-duration: 0.4s;
 	cursor: pointer;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 .button1 {
 	background-color: white;
 	color: black;
 	border: 2px solid #555555;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 .button1:hover {
 	background-color: #555555;
 	color: white;

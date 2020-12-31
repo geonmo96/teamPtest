@@ -88,9 +88,10 @@ public class FileUpload {
 		System.out.println(itemnum);
 		fdto.setItemNum(Integer.parseInt(itemnum));
 		List fileList = fileProcess(mul);
+		System.out.println(itemnum);
 		map.put("fileList", fileList);
 		req.setAttribute("fdto", fdto);
-		RequestDispatcher rd = req.getRequestDispatcher("/item/itemview");
+		RequestDispatcher rd = req.getRequestDispatcher("/item/result");
         try {
 			rd.forward(req, response);
 		} catch (ServletException e) {
@@ -101,7 +102,7 @@ public class FileUpload {
         
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("map",map);
-		mv.setViewName("/item/itemview");
+		mv.setViewName("/item/list");
 		
 		
 		return mv;

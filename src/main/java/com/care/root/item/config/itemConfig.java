@@ -23,9 +23,11 @@ public class itemConfig {
 	@Autowired FileServiceImpl fsvi;
 	@RequestMapping("itemview")
 	public String itemView(@RequestParam String itemnum,Model model) {
+		
 		int itemn = Integer.parseInt(itemnum);
 		FileDTO fdto =  fsvi.itemview(itemn);
 		model.addAttribute("fdto",fdto);
+		
 		return "item/itemview";
 }
 	@RequestMapping("list")
@@ -38,4 +40,19 @@ public class itemConfig {
 		model.addAttribute("alllist",alllist);
 		return "item/list";
 	}
+	@RequestMapping("result")
+	public String resultview() {
+		return "item/itemview";
+	}
+	@RequestMapping("catelist")
+	public String catelistView(Model model, @RequestParam String cate) {
+
+		int allnum = fsvi.fileList();
+		model.addAttribute("allnum",allnum);
+		ArrayList<String> catealllist = fsvi.categorylist(cate);
+		model.addAttribute("alllist",catealllist);
+		return "item/list";
+		
+	}
+
 }

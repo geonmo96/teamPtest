@@ -13,5 +13,6 @@ public interface FileService {
 	public ArrayList<String> fileallnum();
 	public void updata(FileDTO dto);
 	String itemresult(String itemname);
-
+	public ArrayList<String> categorylist(String cate);
+	public int catelist(String cate);
 }

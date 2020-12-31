@@ -48,8 +48,19 @@ public class FileServiceImpl implements FileService{
 	public String itemresult(String itemname) {
 		String itemnum = dao.viewnum(itemname);
 		return itemnum;
-		
 	}
-	
 
+	@Override
+	public ArrayList<String> categorylist(String cate) {
+		ArrayList <String> catelist =  dao.categoryView(cate);
+		return catelist;
+	}
+	@Override
+	public int catelist(String cate) {
+		System.out.println("카테리스트 서비스 시작");
+		int result = 0;
+		ArrayList<String> itemlist = dao.categoryView(cate);
+		result = itemlist.size();
+		return result;
+	}
 }

@@ -17,7 +17,7 @@ public interface FileDAO {
 		@Select("select * from itemlist where itemnum = #{itemnum}")
 		public FileDTO itemview(int filen);
 		
-		@Select("select filenum from itemlist;")
+		@Select("select itemnum from itemlist")
 		public ArrayList<String> itemList();
 
 		@Select("select itemnum from itemlist where itemname = #{itemname}")

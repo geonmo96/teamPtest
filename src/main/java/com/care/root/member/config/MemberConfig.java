@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@MapperScan(basePackages = "com.care.root.member.dao")
+@MapperScan(basePackages = "com.care.root.*.dao")
 public class MemberConfig {
 	@Bean
 	public DriverManagerDataSource memberDataSource() {

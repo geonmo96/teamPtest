@@ -51,6 +51,9 @@ a:hover {
 					</c:when>
 					<c:otherwise>
 						${sessionScope.USER }님&nbsp;&nbsp;
+						<c:if test="${sessionScope.sales == 'sales member' }">
+							<a href="#">상품 등록</a>&nbsp;&nbsp;
+						</c:if>
 						<a href="${pageContext.request.contextPath }/member/myInfo">마이페이지</a>&nbsp;&nbsp;
 						<a href="${pageContext.request.contextPath }/member/logout">로그아웃</a>
 					</c:otherwise>

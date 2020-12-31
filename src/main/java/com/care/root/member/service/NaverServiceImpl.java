@@ -14,20 +14,25 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.care.root.member.dao.ExternalMemberDAO;
+import com.care.root.member.dto.ExternalMemberDTO;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @Service
 public class NaverServiceImpl implements NaverService{
+	@Autowired ExternalMemberDAO edao;
 	
 	public void generateState( HttpServletRequest request) {
 	    SecureRandom random = new SecureRandom();
 	    String state = new BigInteger(130, random).toString(32);
 	    HttpSession session = (HttpSession)request.getSession();
 	    session.setAttribute("state", state);
+	    session.setAttribute("login", "naver");
 	}
 	
 //	String requestURL = "http://api.openhangul.com/basic?q=";
@@ -45,6 +50,14 @@ public class NaverServiceImpl implements NaverService{
 		String accessToken = getAccessToken(code, storedState);
 		HashMap<String, Object> userInfo = getUserInfo(accessToken);
 		session.setAttribute("USER", userInfo.get("name"));
+		int e_id = Integer.parseInt((String) userInfo.get("id"));
+		ExternalMemberDTO dto = edao.selectId(e_id);
+		if(dto == null) {
+			dto = new ExternalMemberDTO();
+			dto.setE_id(e_id);
+			dto.setE_name((String)userInfo.get("name"));
+			edao.join(dto);
+		}
 	}
 	
 	private HashMap<String, Object> getUserInfo(String accessToken){
@@ -68,7 +81,9 @@ public class NaverServiceImpl implements NaverService{
 			JsonElement element = parser.parse(result);
 			JsonObject response = element.getAsJsonObject().get("response").getAsJsonObject();
 			String name = response.getAsJsonObject().get("name").getAsString();
+			String id = response.getAsJsonObject().get("id").getAsString();
 			userInfo.put("name", name);
+			userInfo.put("id", id);
 			br.close();
 		} catch(Exception e) {
 			System.out.println("NaverServiceImpl.getUserInfo() - 에러");

@@ -13,7 +13,28 @@ public class FileDTO {
 		private int kg;
 		private String itemRegion;
 		private String itemValue;
+		private int categorynum;
+		private int itemprice;
+		private int kgpic;
 		
+		public int getKgpic() {
+			return kgpic;
+		}
+		public void setKgpic(int kgpic) {
+			this.kgpic = kgpic;
+		}
+		public int getCategorynum() {
+			return categorynum;
+		}
+		public void setCategorynum(int categorynum) {
+			this.categorynum = categorynum;
+		}
+		public int getItemprice() {
+			return itemprice;
+		}
+		public void setItemprice(int itemprice) {
+			this.itemprice = itemprice;
+		}
 		public int getItemNum() {
 			return itemNum;
 		}
@@ -63,4 +84,5 @@ public class FileDTO {
 		public void setItemValue(String itemValue) {
 			this.itemValue = itemValue;
 		}
+
 }

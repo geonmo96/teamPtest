@@ -10,6 +10,7 @@ public class MemberDTO {
 	private String m_address;
 	private String m_tel;
 	private String email;
+	private String member_code;
 	
 	public String getId() {
 		return id;
@@ -47,5 +48,12 @@ public class MemberDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getMember_code() {
+		return member_code;
+	}
+	public void setMember_code(String member_code) {
+		this.member_code = member_code;
+	}
+	
 	
 }

@@ -16,7 +16,7 @@
 		if(chk1.checked != true || chk2.checked != true || chk3.checked != true){
 			alert("필수 약관에 동의해주세요")
 		} else {
-			location.href="signupFormSeller";
+			location.href="signupForm?member_code=200";
 		}
 	}
 </script>

@@ -30,6 +30,7 @@ input:focus {
 		<input type="text" placeholder=" 아이디" style="text-align:left; width:70%px; height:40px;"><br>
 
 		
+<<<<<<< HEAD
 			<table width="70%" style="margin-left: auto; margin-right: auto;" border="1">
 				<tr>
 					<td colspan="2">
@@ -40,6 +41,14 @@ input:focus {
 					<td width="5%"></td>
 					<td>						
 						<input type="text" name="id" id="id" onblur="dbIdCheck()" placeholder=" 아이디" style="text-align:left; width:70%px; height:40px;">
+=======
+		<form action="signup" method="post" id="fo">
+			<input type="hidden" name="member_code" value="${param.member_code }">
+			<table>
+				<tr> <td>아이디</td> 
+					<td>
+						<input type="text" name="id" id="id" onblur="dbIdCheck()">
+>>>>>>> af6a5f6bed62633112c8531147163df33823cbd9
 						<label id="dbIdCheckView"></label>
 					</td>
 				</tr>

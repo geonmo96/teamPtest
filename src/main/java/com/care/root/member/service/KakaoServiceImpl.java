@@ -11,20 +11,34 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.care.root.member.dao.ExternalMemberDAO;
+import com.care.root.member.dto.ExternalMemberDTO;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 @Service
 public class KakaoServiceImpl implements KakaoService{
+	@Autowired ExternalMemberDAO edao;
 	@Override
 	public void login(String code, HttpServletRequest request) {
 		String accessToken = getAccessToken(code);
 		HashMap<String, Object> userInfo = getUserInfo(accessToken);
 		HttpSession session = (HttpSession)request.getSession();
 		session.setAttribute("USER", userInfo.get("nickName"));
+		session.setAttribute("login", "kakao");
+		int e_id = Integer.parseInt((String) userInfo.get("id"));
+		ExternalMemberDTO eDto = edao.selectId(e_id);
+		if(eDto == null) {
+			ExternalMemberDTO dto = new ExternalMemberDTO();
+			dto.setE_id(e_id);
+			dto.setE_name((String)userInfo.get("nickName"));
+			edao.join(dto);
+			System.out.println("회원가입");
+		}
 	}
 	
 	private HashMap<String, Object> getUserInfo(String accessToken){
@@ -43,11 +57,14 @@ public class KakaoServiceImpl implements KakaoService{
 			while((line = br.readLine()) != null) {
 				result += line;
 			}
-//			System.out.println("response body(info) : " + result);
+			System.out.println("response body(info) : " + result);
 			JsonParser parser = new JsonParser();
 			JsonElement element = parser.parse(result);
 			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
 			String nickName = properties.getAsJsonObject().get("nickname").getAsString();
+			String id = element.getAsJsonObject().get("id").getAsString();
+			userInfo.put("id", id);
+			System.out.println("카카오 아이디 : " + id);
 			userInfo.put("nickName", nickName);
 			br.close();
 		} catch(Exception e) {

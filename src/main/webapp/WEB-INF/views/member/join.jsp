@@ -61,17 +61,12 @@ img {
    <h1></h1>
    <table width="100%">
    <tr>
-<<<<<<< HEAD
-   <td width="25%"><img src="../resources/images/joing_benefit/benefit_kakao.png"></td>
-   <td width="25%"><img src="../resources/images/joing_benefit/benefit_lifeMember.png"></td>
-   <td width="25%"><img src="../resources/images/joing_benefit/benefit_member.png"></td>
-   <td width="25%"><img src="../resources/images/joing_benefit/benefit_PhotoReview.png"></td>
-=======
+
    <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_kakao.png"></td>
    <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_lifeMember.png"></td>
    <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_member.png"></td>
    <td width="25%"><img src="${pageContext.request.contextPath}/resources/images/joing_benefit/benefit_PhotoReview.png"></td>
->>>>>>> master
+
    </tr>
    </table>
    <p style="text-align:center; font-size:10px;">

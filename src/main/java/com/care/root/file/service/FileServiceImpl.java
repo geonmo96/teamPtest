@@ -24,20 +24,21 @@ public class FileServiceImpl implements FileService{
 		}
 
 	@Override
-	public String itemview(int filen) {
+	public FileDTO itemview(int filen) {
 		FileDTO dto = dao.itemview(filen);
-		String bpage = "itemView";
-		String result = bpage + dto.getItemNum();
-		return result;
+
+		return dto;
 	}
 
 	@Override
 	public int fileList() {
+		System.out.println("파일리스트 서비스 시작");
 		int result = 0;
 		ArrayList<String> itemlist = dao.itemList();
 		result = itemlist.size();
 		return result;
 	}
+
 	@Override
 	public ArrayList<String> fileallnum(){
 		ArrayList<String> allnumlist = dao.itemList();

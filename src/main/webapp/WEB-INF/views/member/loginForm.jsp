@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-
 .table {
 	width: 60%;
 	margin-left: auto;
@@ -60,21 +59,21 @@
 		</a>
 	</div>
 	<form action="login" method="post">
-	<table class="table">
-		<tr>
-			<td colspan="2"><h3>로그인</h3><hr></td>
-		</tr>
-		<tr> 
-			<td align="center"> 					
-				<input type="text" name="id" placeholder="아이디" style="text-align:left; width:60%; height:30px;"> 
-			</td> 
-		</tr>
-		<tr> <td align="center"> <input type="password" name="pw" placeholder="비밀번호" style="text-align:left; width:60%; height:30px;"> </td> </tr>
-		<tr> <td align="center"> <input type="submit" value="로그인" class="button button1"> </td> </tr> 
-			
-		<tr> <td> <a href="findIdEmail">아이디 찾기</a> </td> <td> <a href="findPwEmail">비밀번호 찾기</a> </td> </tr> 
-		<tr> <td> <a href="signupSelect">회원가입</a>
-	</table>
+		<table class="table">
+			<tr>
+				<td colspan="2"><h3>로그인</h3><hr></td>
+			</tr>
+			<tr> 
+				<td align="center" colspan="2"> 					
+					<input type="text" name="id" placeholder="아이디" style="text-align:left; width:60%; height:30px;"> 
+				</td> 
+			</tr>
+			<tr> <td align="center" colspan="2"> <input type="password" name="pw" placeholder="비밀번호" style="text-align:left; width:60%; height:30px;"> </td> </tr>
+			<tr> <td align="center" colspan="2"> <input type="submit" value="로그인" class="button button1" > </td> </tr> 
+				
+			<tr> <td align="center"> <a href="findIdEmail">아이디 찾기</a> </td> <td align="center"> <a href="findPwEmail">비밀번호 찾기</a> </td> </tr> 
+			<tr> <td colspan="2" align="center"> <a href="signupSelect">회원가입</a>
+		</table>
 	</form>
 </body>
 </html>

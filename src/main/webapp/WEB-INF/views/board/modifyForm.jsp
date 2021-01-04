@@ -26,7 +26,7 @@
 	<form action="modify" method="post" id="fo">
 		<input type="hidden" name="write_no" value="${boardDto.write_no }">
 		<input type="text" name="title" id="title" value="${boardDto.title }"><br>
-		<input type="text" name="content" id="content" value="${boardDto.content }"><br>
+		<textarea rows="50" cols="100" name="content" id="content">${boardDto.content }</textarea>
 		<input type="button" onclick="checkBlank()" value="공지사항 수정">
 	</form>
 </body>

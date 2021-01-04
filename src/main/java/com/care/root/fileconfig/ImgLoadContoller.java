@@ -3,9 +3,7 @@ package com.care.root.fileconfig;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +25,8 @@ public class ImgLoadContoller {
 		int filenum = fdto.getItemNum();
 		String filenum2 = Integer.toString(filenum);
 		String realFile = "C:\\Users\\heamok\\Desktop\\hm\\workproject\\teamProject\\src\\main\\webapp\\resources\\images";
+		
+		
 		String fileNm = filenum2;
 		String ext = ".jpg";
 

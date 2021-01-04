@@ -53,18 +53,18 @@ table {
 			<table>
 				<tr>
 					<td colspan="2">
-					<h3>회원정보 입력</h3><hr>
+						<h3>회원정보 입력</h3><hr>
 					</td>
 				</tr>
 				<tr>
 					<td width="5%"></td>
 					<td>						
 			<input type="hidden" name="member_code" value="${param.member_code }">
-			<table>
+			
 				<tr> <td></td> 
 					<td>
 						<input type="text" name="id" id="id" onblur="dbIdCheck()" placeholder=" 아이디" style="text-align:left; width:60%; height:30px;">
-						<label id="dbIdCheckView"></label>
+						<label id="dbIdCheckView" style="size:8px;"></label>
 					</td>
 				</tr>
 				

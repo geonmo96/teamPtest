@@ -16,8 +16,8 @@ public class BoardController {
 	@Autowired BoardServiceImpl boardService;
 	
 	@RequestMapping("listView")
-	public String listView(Model model) {
-		boardService.listView(model);
+	public String listView(Model model, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		boardService.listView(model, page);
 		return "/board/listView";
 	}
 	

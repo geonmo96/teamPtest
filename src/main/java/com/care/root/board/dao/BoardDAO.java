@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
@@ -13,8 +14,9 @@ import com.care.root.board.dto.BoardDTO;
 @Repository
 public interface BoardDAO {
 	
-	@Select("select * from board order by write_no desc")
-	public ArrayList<BoardDTO> listView();
+	
+	@Select("select b.* from (select rownum rn, a.* from (select * from board order by write_no desc)a)b where rn between #{start} and #{end}")
+	public ArrayList<BoardDTO> listView(@Param("start") int start, @Param("end") int end);
 	@Select("select * from board where write_no = #{write_no}")
 	public BoardDTO contentView(String write_no);
 	@Select("select count(*) from board")

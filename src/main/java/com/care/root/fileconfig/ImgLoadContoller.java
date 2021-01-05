@@ -26,7 +26,7 @@ public class ImgLoadContoller {
 	public void getImage(HttpServletRequest req, HttpSession session, HttpServletResponse res, @RequestParam HashMap<String, String> map) throws Exception {
 		int filenum = fdto.getItemNum();
 		String filenum2 = Integer.toString(filenum);
-		String realFile = "C:\\Users\\heamok\\Desktop\\hm\\workproject\\teamProject\\src\\main\\webapp\\resources\\images";
+		String realFile = "C:\\image";
 		String fileNm = filenum2;
 		String ext = ".jpg";
 

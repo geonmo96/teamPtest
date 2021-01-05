@@ -8,5 +8,6 @@
 </head>
 <body>
 	<jsp:include page="default/header.jsp"></jsp:include>
+	ojdbc test
 </body>
 </html>

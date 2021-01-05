@@ -16,6 +16,8 @@ public class BoardServiceImpl {
 	public void listView(Model model) {
 		ArrayList<BoardDTO> list = boardDao.listView();
 		model.addAttribute("list", list);
+		model.addAttribute("totalContent", boardDao.totalContent());
+		System.out.println(boardDao.totalContent() /10 + 1);
 	}
 	
 	public void contentView(Model model, String write_no) {

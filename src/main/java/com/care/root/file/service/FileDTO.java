@@ -1,5 +1,7 @@
 package com.care.root.file.service;
 
+import java.io.File;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -84,5 +86,4 @@ public class FileDTO {
 		public void setItemValue(String itemValue) {
 			this.itemValue = itemValue;
 		}
-
 }

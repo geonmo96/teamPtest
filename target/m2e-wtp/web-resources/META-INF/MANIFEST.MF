@@ -1,5 +1,15 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: 82109
 Build-Jdk: 1.8.0_231
+=======
+<<<<<<< HEAD
+Built-By: heamok
+Build-Jdk: 14.0.2
+=======
+Built-By: user
+Build-Jdk: 11.0.9
+>>>>>>> 94a58bf56dbb14c9018231267b490bf5b3511760
+>>>>>>> 412bc8f561db9adbee804f6237d07d0bff39867f
 Created-By: Maven Integration for Eclipse
 

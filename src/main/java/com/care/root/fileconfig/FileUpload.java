@@ -34,7 +34,7 @@ import com.care.root.file.service.FileServiceImpl;
 public class FileUpload {
 	@Autowired FileServiceImpl fsvi;
 	@Autowired FileDTO fdto;
-	private final String IMAGE_REPO = "C:\\Users\\heamok\\Desktop\\hm\\workproject\\teamProject\\src\\main\\webapp\\resources\\images";
+	private final String IMAGE_REPO = "C:\\image";
 	@RequestMapping("form")
 	public String form() {
 		return "/seller/seller";

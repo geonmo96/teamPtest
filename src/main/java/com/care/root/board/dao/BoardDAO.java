@@ -17,6 +17,8 @@ public interface BoardDAO {
 	public ArrayList<BoardDTO> listView();
 	@Select("select * from board where write_no = #{write_no}")
 	public BoardDTO contentView(String write_no);
+	@Select("select count(*) from board")
+	public int totalContent();
 	
 	@Update("update board set hit = hit + 1 where write_no = #{write_no}")
 	public void hit(String write_no);

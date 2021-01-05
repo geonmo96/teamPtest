@@ -3,9 +3,7 @@ package com.care.root.fileconfig;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +24,13 @@ public class ImgLoadContoller {
 	public void getImage(HttpServletRequest req, HttpSession session, HttpServletResponse res, @RequestParam HashMap<String, String> map) throws Exception {
 		int filenum = fdto.getItemNum();
 		String filenum2 = Integer.toString(filenum);
+<<<<<<< HEAD
 		String realFile = "C:\\image";
+=======
+		String realFile = "C:\\Users\\heamok\\Desktop\\hm\\workproject\\teamProject\\src\\main\\webapp\\resources\\images";
+		
+		
+>>>>>>> 94a58bf56dbb14c9018231267b490bf5b3511760
 		String fileNm = filenum2;
 		String ext = ".jpg";
 

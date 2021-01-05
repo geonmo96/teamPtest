@@ -24,7 +24,6 @@ public class MemberConfig {
 	@Bean
 	public SqlSessionFactory memberSqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean ssf = new SqlSessionFactoryBean();
-		ssf.setDataSource(memberDataSource());
 		return ssf.getObject();
 	}
 	@Bean
